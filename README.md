@@ -14,7 +14,7 @@ How it looks:
 Install it from npm and include it in your React build process (using Webpack, Browserify, etc).
 
 ```
-npm i react-table-with-csv-download
+npm i react-js-table-with-csv-dl
 ```
 
 # Usage
