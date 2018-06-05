@@ -60,6 +60,14 @@ For example:
 />
 ```
 
+You can also customize the style using the following props:
+
+* `headerCss` => style for headers e.g passing: {{color: "blue", backgroundColor:"#fff"}}
+Changes the header background to white and the text to blue
+
+* `bodyCss` => style for each row e.g passing: {{color: "blue", backgroundColor:"#fff"}}
+Changes the background to white and the text to blue
+
 # License 
 
 Licensed under the MIT License.
