@@ -1,0 +1,57 @@
+.logViewer{
+  margin: 0 auto;
+  font-family: Helvetica;
+  font-size: 14px;
+}
+
+.logViewerTable{
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  margin: 10px 0;
+  width: 100%;
+}
+
+
+.header1{
+  width: 10%;
+}
+
+.header2{
+  width: 90%;
+}
+
+.logViewerTableHeader{
+  border: 2px solid;
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+  font-family: sans-serif;
+  border: 1px solid #ddd;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #0F991B;
+  color: white;
+  width: inline-block;
+  font-weight: bold;
+}
+
+.logViewerBody:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.logViewerTableBody td {
+  padding: 0px;
+  border: 1px solid #ddd;
+}
+
+.logViewerSuccess_true{
+  color:#0b8e07;
+}
+
+.logViewerSuccess_false{
+  color:#8e0707;
+}
+
+.logViewerSuccess_undefined{
+  color:#000;
+}
