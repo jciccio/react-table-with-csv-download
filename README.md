@@ -7,7 +7,7 @@ React JS Table and log viewer with CSV download functionality. You can display d
 
 
 How it looks:
-![alt text](https://github.com/jciccio/react-table-with-csv-download/blob/master/table_example.png)
+![alt text](table_example.png "Table example")
 
 # Installation
 
@@ -21,14 +21,14 @@ npm i react-js-table-with-csv-dl
 
 Import `TableViewer` in your react component.
 
-```
+```javascript
 import TableViewer from 'react-table-with-csv-download';
 ```
 
 Props available:
 * `content` - An array of objects the data content
 
-```
+```javascript
 let table = [ 
   {number: 12, name: "Del Piero", position: "ST"},
   {number: 21, name: "Pirlo", position: "MC"},
@@ -49,7 +49,7 @@ In this case, the table will show only `name` and `number`. In case of downloadi
 
 
 For example:
-```
+```javascript
 <TableViewer
   title="Lineup"
   content={this.state.table}
@@ -67,6 +67,18 @@ Changes the header background to white and the text to blue
 
 * `bodyCss` => style for each row e.g passing: {{color: "blue", backgroundColor:"#fff"}}
 Changes the background to white and the text to blue
+
+# Props
+
+| Name        | Type            | Mandatory | Description  
+| ------------- |:-------------:| -----:|-----:|
+| content      | object | Y |Contents to display on tables |
+| headers      | array (String)   | Y   |   Array of strings, these will be used to choose what to show in the table |
+| minHeight | integer     | Y|  Min table desired height |
+| maxHeight | integer   |Y  |   Max table desired height |
+| activateDownloadButton | boolean   |Y |   Activates download button |
+| headerCss | object   |N |   Headers customization |
+| bodyCss | object   |N |   Body customizations |
 
 # License 
 
