@@ -7,7 +7,7 @@ React JS Table and log viewer with CSV download functionality. You can display d
 
 
 How it looks:
-![alt text](table_example.png "Table example")
+![alt text](table_example.png "React JS Table with download button example")
 
 # Installation
 
@@ -71,7 +71,7 @@ Changes the background to white and the text to blue
 # Props
 
 | Name        | Type            | Mandatory | Description  
-| ------------- |:-------------:| -----:|-----:|
+| ------------- |:-------------:| -----:|:-----|
 | content      | object | Y |Contents to display on tables |
 | headers      | array (String)   | Y   |   Array of strings, these will be used to choose what to show in the table |
 | minHeight | integer     | Y|  Min table desired height |
