@@ -7,7 +7,7 @@ React JS Table and log viewer with CSV download functionality. You can display d
 
 
 How it looks:
-![alt text](table_example.png "React JS Table with download button example")
+![alt text](screenshots/table.png "React JS Table with download button example")
 
 # Installation
 
