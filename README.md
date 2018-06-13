@@ -1,3 +1,8 @@
+
+![npm](https://img.shields.io/npm/dt/react-js-table-with-csv-dl.svg)
+![npm](https://img.shields.io/npm/v/react-js-table-with-csv-dl.svg)
+![npm](https://img.shields.io/npm/l/react-js-table-with-csv-dl.svg)
+
 # React-table-with-csv-download
 React JS Table and log viewer with CSV download functionality
 
