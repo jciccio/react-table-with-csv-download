@@ -31,7 +31,7 @@ import TableViewer from 'react-table-with-csv-download';
 ```
 
 Props available:
-* `content` - An array of objects the data content
+* `content` - An array of objects. The key will be used for the table headers.
 
 ```javascript
 let table = [ 
@@ -40,6 +40,9 @@ let table = [
   {number: 1, name: "Buffon", position: "GK"}
 ];
 ```
+
+In the above example, will create a table with three columns: `number, name, position`
+
 
 * `headers` - An array of strings with the headers you want to display
 
