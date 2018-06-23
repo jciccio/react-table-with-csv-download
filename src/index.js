@@ -4,6 +4,13 @@ import { Scrollbars } from "react-custom-scrollbars";
 import "./logViewer.css";
 import MdFileDownload from "react-icons/lib/md/file-download";
 
+
+/**
+ * TableViewer component
+ *
+ * @version 0.1.10
+ * @author [Jose Antonio Ciccio](https://github.com/jciccio)
+ */
 class TableViewer extends Component {
   constructor(props) {
     super(props);
