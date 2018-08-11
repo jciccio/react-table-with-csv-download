@@ -28,7 +28,7 @@ npm i react-js-table-with-csv-dl
 Import `TableViewer` in your react component.
 
 ```javascript
-import TableViewer from 'react-table-with-csv-download';
+import TableViewer from 'react-js-table-with-csv-dl';
 ```
 
 Props available:

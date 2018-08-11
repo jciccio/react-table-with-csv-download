@@ -743,6 +743,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * TableViewer component
+ *
+ * @version 0.1.10
+ * @author [Jose Antonio Ciccio](https://github.com/jciccio)
+ */
 var TableViewer = function (_Component) {
   _inherits(TableViewer, _Component);
 
@@ -793,7 +799,7 @@ var TableViewer = function (_Component) {
       if (this.props.activateDownloadButton) {
         return _react2.default.createElement(
           "div",
-          { "class": "csvFileDownloader" },
+          { className: "csvFileDownloader" },
           _react2.default.createElement(
             "button",
             {
@@ -812,26 +818,27 @@ var TableViewer = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var height = { height: this.props.maxHeight };
       return _react2.default.createElement(
         "div",
         { className: "logViewer" },
         this.renderStats(),
         this.renderDownload(),
         _react2.default.createElement(
-          _reactCustomScrollbars.Scrollbars,
-          {
-            autoHeight: true,
-            autoHeightMin: this.props.minHeight,
-            autoHeightMax: this.props.maxHeight
-          },
+          "table",
+          { className: "logViewerTable" },
           _react2.default.createElement(
-            "table",
-            { className: "logViewerTable" },
-            _react2.default.createElement(
-              "thead",
-              null,
-              this.renderHeaders()
-            ),
+            "thead",
+            null,
+            this.renderHeaders()
+          )
+        ),
+        _react2.default.createElement(
+          "table",
+          { className: "logViewerTable" },
+          _react2.default.createElement(
+            "tbody",
+            { style: height },
             this.renderBody()
           )
         )
@@ -842,9 +849,10 @@ var TableViewer = function (_Component) {
     value: function renderRow(row) {
       var headers = this.props.headers;
       return headers.map(function (header, i) {
+        if (i > 2) i = 2;
         return _react2.default.createElement(
           "td",
-          { className: "header" + i },
+          { className: "header" },
           row[header]
         );
       });
@@ -864,9 +872,10 @@ var TableViewer = function (_Component) {
             style: bodyStyle
           },
           headers.map(function (header, i) {
+            if (i > 1) i = 1;
             return _react2.default.createElement(
               "td",
-              { className: "header" + i },
+              { className: "header" },
               row[header]
             );
           })
@@ -883,14 +892,11 @@ var TableViewer = function (_Component) {
           "tr",
           null,
           headers.map(function (header, i) {
+
             return _react2.default.createElement(
               "th",
               { className: "logViewerTableHeader", style: headerCss },
-              _react2.default.createElement(
-                "div",
-                null,
-                header
-              )
+              header
             );
           })
         );
@@ -959,7 +965,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, ".logViewer{\n  margin: 0 auto;\n  font-family: Helvetica;\n  font-size: 14px;\n}\n\n.logViewerTable{\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px 0;\n  width: 100%;\n}\n\n\n.header1{\n  width: 10%;\n}\n\n.header2{\n  width: 90%;\n}\n\n.logViewerTableHeader{\n  border: 2px solid;\n  text-align: center;\n  color: #000;\n  font-weight: bold;\n  font-family: sans-serif;\n  border: 1px solid #ddd;\n  padding-top: 4px;\n  padding-bottom: 4px;\n  background-color: #0F991B;\n  color: white;\n  width: inline-block;\n  font-weight: bold;\n}\n\n.logViewerBody:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.logViewerTableBody td {\n  padding: 0px;\n  border: 1px solid #ddd;\n}\n\n.logViewerSuccess_true{\n  color:#0b8e07;\n}\n\n.logViewerSuccess_false{\n  color:#8e0707;\n}\n\n.logViewerSuccess_undefined{\n  color:#000;\n}\n", ""]);
+exports.push([module.i, ".logViewer{\n  margin: 0 auto;\n  font-family: Helvetica;\n  font-size: 14px;\n}\n\n.logViewerTable{\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px 0;\n  width: 100%;\n\n}\n\n.header{\n  /*width: inherit;*/\n /* padding: 0 8px;*/\n}\n\n.header1{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.header2{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.logViewerTableHeader{\n  border: 2px solid;\n  text-align: center;\n  color: #000;\n  font-weight: bold;\n  font-family: sans-serif;\n  border: 1px solid #ddd;\n  background-color: #0F991B;\n  color: white;\n  width: inline-block;\n  padding: 4px 8px;\n  font-weight: bold;\n\n /*   width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\n.logViewerBody:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.logViewerTableBody td {\n  padding: 0px;\n  border: 1px solid #ddd;\n}\n\n.logViewerSuccess_true{\n  color:#0b8e07;\n}\n\n.logViewerSuccess_false{\n  color:#8e0707;\n}\n\n.logViewerSuccess_undefined{\n  color:#000;\n}\n\n\n.fixed_headers {\n  /*width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 5px;\n  text-align: left;\n}\n\nthead tr {\n   /* display: block;\n    position: relative;*/\n}\n\ntbody {\n /* display: block;*/\n  overflow: auto;\n  width: 100%;\n  height: 300px;\n}\n", ""]);
 
 // exports
 

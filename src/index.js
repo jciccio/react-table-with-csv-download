@@ -53,7 +53,7 @@ class TableViewer extends Component {
   renderDownload() {
     if (this.props.activateDownloadButton) {
       return (
-        <div class="csvFileDownloader">
+        <div className="csvFileDownloader">
           <button
             download={this.props.csvFileName}
             onClick={this.generateAndDownloadCSV}
@@ -69,22 +69,23 @@ class TableViewer extends Component {
   }
 
   render() {
+    var height = {height: this.props.maxHeight}
     return (
       <div className="logViewer">
 
         {this.renderStats()}
         {this.renderDownload()}
 
-        <Scrollbars
-          autoHeight
-          autoHeightMin={this.props.minHeight}
-          autoHeightMax={this.props.maxHeight}
-        >
-          <table className="logViewerTable">
-            <thead>{this.renderHeaders()}</thead>
+        <table className="logViewerTable">
+          <thead>{this.renderHeaders()}</thead>
+        </table>
+
+        <table className="logViewerTable">
+          <tbody style={height}>
             {this.renderBody()}
-          </table>
-        </Scrollbars>
+          </tbody>  
+        </table>
+
       </div>
     );
   }
@@ -93,8 +94,10 @@ class TableViewer extends Component {
   renderRow(row){
     var headers = this.props.headers;
     return headers.map(function(header, i) {
+      if (i >2)
+        i = 2;
       return (
-        <td className={`header${i}`}>{row[header]}</td>
+        <td className={`header`}>{row[header]}</td>
       );
     });
   }
@@ -113,8 +116,10 @@ class TableViewer extends Component {
         >
           
           { headers.map(function(header, i) {
+            if (i>1)
+              i = 1;
             return (
-              <td className={`header${i}`}>{row[header]}</td>
+              <td className={`header`}>{row[header]}</td>
             );
           })}
         </tr>
@@ -129,9 +134,10 @@ class TableViewer extends Component {
       return (
         <tr>
         {headers.map(function(header, i) {
+          
           return (
-              <th className="logViewerTableHeader" style={headerCss}>
-                <div>{header}</div>
+              <th className={`logViewerTableHeader`} style={headerCss}>
+                {header}
               </th>
           );
         })}
