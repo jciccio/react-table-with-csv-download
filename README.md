@@ -44,6 +44,18 @@ let table = [
 
 In the above example, will create a table with three columns: `number, name, position`
 
+Optionally, you can add the key `success` to the object. If value is true, the row will be displayed in green, if it is false will be displayed red.
+
+```javascript
+let table = [ {number: 12, name: "Del Piero", position: "ST", success: true},
+  {number: 21, name: "Pirlo", position: "MC", success: false},
+  {number: 10, name: "Ruiz", position: "MDI"},
+];
+```
+
+The above object will be displayed as follows:
+
+![alt text](screenshots/table_success.png "React JS Table with semantic results")
 
 * `headers` - An array of strings with the headers you want to display
 
@@ -82,12 +94,13 @@ Changes the background to white and the text to blue
 | Name        | Type            | Mandatory | Description  
 | ------------- |:-------------:| -----:|:-----|
 | content      | object | Y |Contents to display on tables |
-| headers      | array (String)   | Y   |   Array of strings, these will be used to choose what to show in the table |
-| minHeight | integer     | Y|  Min table desired height |
-| maxHeight | integer   |Y  |   Max table desired height |
-| activateDownloadButton | boolean   |Y |   Activates download button |
-| headerCss | object   |N |   Headers customization |
-| bodyCss | object   |N |   Body customizations |
+| headers      | array (String)   | Y   | Array of strings, these will be used to choose what to show in the table |
+| minHeight | integer     | Y| Min table desired height |
+| maxHeight | integer   |Y  | Max table desired height |
+| activateDownloadButton | boolean   |Y | Activates download button |
+| headerCss | object   |N | Headers customization |
+| bodyCss | object   |N | Body customizations |
+| filename | String   |N | Name of the downloaded filename (default is logResults.csv) |
 
 # License 
 

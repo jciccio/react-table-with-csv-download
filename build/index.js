@@ -793,6 +793,22 @@ var TableViewer = function (_Component) {
       link.click();
       document.body.removeChild(link);
     }
+
+    /* static getDerivedStateFromProps(nextProps, prevState) {
+       if (nextProps.csvText !== prevState.csvText) {
+         let Papa = require("papaparse/papaparse.min.js");
+         let data = Papa.parse(nextProps.csvText);
+         return { 
+           csv: data,
+           csvText: nextProps.csvText
+         }
+       }  
+       return null;
+     }
+      shouldComponentUpdate(nextProps, nextState){
+       return (this.state.csvText !== nextState.csvText);
+     }*/
+
   }, {
     key: "renderDownload",
     value: function renderDownload() {
@@ -825,62 +841,92 @@ var TableViewer = function (_Component) {
         this.renderStats(),
         this.renderDownload(),
         _react2.default.createElement(
-          "table",
-          { className: "logViewerTable" },
+          "div",
+          { className: "divTable", style: height },
           _react2.default.createElement(
-            "thead",
-            null,
+            "div",
+            { className: "divTableHeading" },
             this.renderHeaders()
-          )
-        ),
-        _react2.default.createElement(
-          "table",
-          { className: "logViewerTable" },
+          ),
           _react2.default.createElement(
-            "tbody",
-            { style: height },
+            "div",
+            { className: "divTableBody" },
             this.renderBody()
           )
         )
       );
     }
   }, {
-    key: "renderRow",
-    value: function renderRow(row) {
-      var headers = this.props.headers;
-      return headers.map(function (header, i) {
-        if (i > 2) i = 2;
-        return _react2.default.createElement(
-          "td",
-          { className: "header" },
-          row[header]
-        );
-      });
-    }
-  }, {
     key: "renderBody",
     value: function renderBody() {
+      var _this2 = this;
+
       var rows = this.props.content;
       var headers = this.props.headers;
-      var bodyStyle = this.props.bodyCss;
-      return rows.map(function (row, i) {
-        return _react2.default.createElement(
-          "tr",
-          {
-            key: "rowNumber_" + i,
-            className: "logViewerBody logViewerSuccess_" + row.success,
-            style: bodyStyle
-          },
-          headers.map(function (header, i) {
-            if (i > 1) i = 1;
-            return _react2.default.createElement(
-              "td",
-              { className: "header" },
-              row[header]
+      //var bodyStyle = this.props.bodyCss;
+
+      if (rows !== null) {
+        return rows.map(function (row, i) {
+          return _this2.getRow(row, i);
+        });
+      } else {
+        return null;
+      }
+      /*
+          return rows.map(function(row, i) {
+            return (
+              <tr
+                key={"rowNumber_" + i}
+                className={`logViewerBody logViewerSuccess_${row.success}`}
+                style={bodyStyle}
+              >
+                
+                { headers.map(function(header, i) {
+                  return (
+                    <td className={`header`}>{row[header]}</td>
+                  );
+                })}
+              </tr>
             );
-          })
-        );
-      });
+          });*/
+    }
+  }, {
+    key: "getRow",
+    value: function getRow(row, i) {
+      return _react2.default.createElement(
+        "div",
+        {
+          key: "table_row_" + i + " ",
+          className: "divTableRow logViewerSuccess_" + row.success,
+          style: this.props.bodyCss
+        },
+        this.renderRow(row, i)
+      );
+    }
+  }, {
+    key: "renderRow",
+    value: function renderRow(row, i) {
+      var headers = this.props.headers;
+      if (row) {
+        var rowContent = headers.map(function (header, element) {
+          return _react2.default.createElement(
+            "div",
+            {
+              key: "table_row_" + i + "_cell_" + element,
+              className: "divTableCell" },
+            row[header]
+          );
+        });
+        return rowContent;
+      } else {
+        return null;
+      }
+      /* 
+       return headers.map(function(header, i) {
+         return (
+           <td className={`header`}>{row[header]}</td>
+         );
+       });*/
     }
   }, {
     key: "renderHeaders",
@@ -889,13 +935,12 @@ var TableViewer = function (_Component) {
       var headerCss = this.props.headerCss;
       if (headers) {
         return _react2.default.createElement(
-          "tr",
-          null,
-          headers.map(function (header, i) {
-
+          "div",
+          { className: "divTableRow" },
+          headers.map(function (header, index) {
             return _react2.default.createElement(
-              "th",
-              { className: "logViewerTableHeader", style: headerCss },
+              "div",
+              { key: "table_header_" + index, className: "divTableCell", style: headerCss },
               header
             );
           })
@@ -965,7 +1010,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, ".logViewer{\n  margin: 0 auto;\n  font-family: Helvetica;\n  font-size: 14px;\n}\n\n.logViewerTable{\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px 0;\n  width: 100%;\n\n}\n\n.header{\n  /*width: inherit;*/\n /* padding: 0 8px;*/\n}\n\n.header1{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.header2{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.logViewerTableHeader{\n  border: 2px solid;\n  text-align: center;\n  color: #000;\n  font-weight: bold;\n  font-family: sans-serif;\n  border: 1px solid #ddd;\n  background-color: #0F991B;\n  color: white;\n  width: inline-block;\n  padding: 4px 8px;\n  font-weight: bold;\n\n /*   width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\n.logViewerBody:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.logViewerTableBody td {\n  padding: 0px;\n  border: 1px solid #ddd;\n}\n\n.logViewerSuccess_true{\n  color:#0b8e07;\n}\n\n.logViewerSuccess_false{\n  color:#8e0707;\n}\n\n.logViewerSuccess_undefined{\n  color:#000;\n}\n\n\n.fixed_headers {\n  /*width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 5px;\n  text-align: left;\n}\n\nthead tr {\n   /* display: block;\n    position: relative;*/\n}\n\ntbody {\n /* display: block;*/\n  overflow: auto;\n  width: 100%;\n  height: 300px;\n}\n", ""]);
+exports.push([module.i, ".logViewer{\n  margin: 0 auto;\n  font-family: Helvetica;\n  font-size: 14px;\n}\n\n.logViewerTable{\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px 0;\n  width: 100%;\n\n}\n\n.header{\n  /*width: inherit;*/\n /* padding: 0 8px;*/\n}\n\n.header1{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.header2{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.logViewerTableHeader{\n  border: 2px solid;\n  text-align: center;\n  color: #000;\n  font-weight: bold;\n  font-family: sans-serif;\n  border: 1px solid #ddd;\n  background-color: #0F991B;\n  color: white;\n  width: inline-block;\n  padding: 4px 8px;\n  font-weight: bold;\n\n /*   width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\n.logViewerBody:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.logViewerTableBody td {\n  padding: 0px;\n  border: 1px solid #ddd;\n}\n\n.logViewerSuccess_true{\n  color:#0b8e07;\n}\n\n.logViewerSuccess_false{\n  color:#8e0707;\n}\n\n.logViewerSuccess_undefined{\n  color:#000;\n}\n\n\n.fixed_headers {\n  /*width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 5px;\n  text-align: left;\n}\n\nthead tr {\n   /* display: block;\n    position: relative;*/\n}\n\ntbody {\n /* display: block;*/\n  overflow: auto;\n  width: 100%;\n  height: 300px;\n}\n\n\n.divTable{\n\tdisplay: table;\n  width: 100%;\n  overflow: auto;\n  height: 300px;\n  \n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px;\n}\n.divTableRow {\n\tdisplay: table-row;\n}\n.divTableHeading {\n  border: 2px solid;\n  padding: 5px;\n  text-align: center;\n  font-weight: bold;\n  font-family: sans-serif;\n\n  border: 1px solid #ddd;\n  padding-top: 12px;\n  padding-bottom: 12px;\n  background-color: #38bcc3;\n  color: white;\n  display: table-header-group;\n  \n\tfont-weight: bold;\n}\n.divTableCell, .divTableHead {\n\tborder: 1px solid #999999;\n\tdisplay: table-cell;\n\tpadding: 3px 10px;\n}\n\n.divTableFoot {\n\tbackground-color: #EEE;\n\tdisplay: table-footer-group;\n\tfont-weight: bold;\n}\n.divTableBody {\n\tdisplay: table-row-group;\n}\n\n.divTableRow:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.divTableBody div {\n  padding: 4px;\n  border: 1px solid #ddd;\n}\n\n.loader {\n  border: 3px solid #f3f3f3;\n  border-top: 3px solid #3498db;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  -webkit-animation: spin 1s linear infinite;\n  animation: spin 1s linear infinite;\n  margin: 0 5px;\n  display: inline-flex;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n", ""]);
 
 // exports
 

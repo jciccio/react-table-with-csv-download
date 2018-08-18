@@ -41,14 +41,30 @@ class TableViewer extends Component {
     var encodedUri = encodeURI(csvContent);
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "logResults.csv");
+    let filename = this.props.filename? this.props.filename : "logResults.csv";
+    
+    link.setAttribute("download", filename);
     link.innerHTML = "Download";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   }
 
-  
+ /* static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.csvText !== prevState.csvText) {
+      let Papa = require("papaparse/papaparse.min.js");
+      let data = Papa.parse(nextProps.csvText);
+      return { 
+        csv: data,
+        csvText: nextProps.csvText
+      }
+    }  
+    return null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    return (this.state.csvText !== nextState.csvText);
+  }*/
 
   renderDownload() {
     if (this.props.activateDownloadButton) {
@@ -72,59 +88,66 @@ class TableViewer extends Component {
     var height = {height: this.props.maxHeight}
     return (
       <div className="logViewer">
-
         {this.renderStats()}
         {this.renderDownload()}
-
-        <table className="logViewerTable">
-          <thead>{this.renderHeaders()}</thead>
-        </table>
-
-        <table className="logViewerTable">
-          <tbody style={height}>
-            {this.renderBody()}
-          </tbody>  
-        </table>
-
+        <div className="divTable"  style={height}>
+          <div className="divTableHeading">{this.renderHeaders()}</div>
+          <div className="divTableBody">{this.renderBody()}</div>
+        </div>
       </div>
     );
   }
 
-
-  renderRow(row){
-    var headers = this.props.headers;
-    return headers.map(function(header, i) {
-      if (i >2)
-        i = 2;
-      return (
-        <td className={`header`}>{row[header]}</td>
-      );
-    });
-  }
- 
-
   renderBody() {
     var rows = this.props.content;
     var headers  = this.props.headers;
-    var bodyStyle = this.props.bodyCss;
-    return rows.map(function(row, i) {
+
+    if (rows !== null){
+      return rows.map((row, i) => {
+        return this.getRow(row,i);
+      });
+    }
+    else {
+      return (null);
+    }
+
+  }
+
+  getRow(row, i){
+    return(
+      <div 
+        key={`table_row_${i} `} 
+        className={`divTableRow logViewerSuccess_${row.success}`}
+        style={this.props.bodyCss}
+      >
+        {this.renderRow(row,i)}
+      </div>
+    )
+  }
+
+  renderRow(row, i){
+    var headers = this.props.headers;
+    if (row){
+      var rowContent = headers.map((header, element) => {
+        return (
+          <div 
+          key={`table_row_${i}_cell_${element}`} 
+          className="divTableCell">
+            {row[header]}
+          </div>
+        )
+      });
+      return rowContent;
+    }
+    else {
+      return null;
+    }
+   /* 
+    return headers.map(function(header, i) {
       return (
-        <tr
-          key={"rowNumber_" + i}
-          className={`logViewerBody logViewerSuccess_${row.success}`}
-          style={bodyStyle}
-        >
-          
-          { headers.map(function(header, i) {
-            if (i>1)
-              i = 1;
-            return (
-              <td className={`header`}>{row[header]}</td>
-            );
-          })}
-        </tr>
+        <td className={`header`}>{row[header]}</td>
       );
-    });
+    });*/
   }
 
   renderHeaders() {
@@ -132,16 +155,15 @@ class TableViewer extends Component {
     var headerCss = this.props.headerCss;
     if (headers){
       return (
-        <tr>
-        {headers.map(function(header, i) {
-          
+        <div className="divTableRow">
+        {headers.map(function(header, index) {
           return (
-              <th className={`logViewerTableHeader`} style={headerCss}>
-                {header}
-              </th>
+            <div key={`table_header_${index}`} className="divTableCell" style={headerCss}>
+              {header}
+            </div>
           );
         })}
-        </tr>
+        </div>
       );
     }
     else {

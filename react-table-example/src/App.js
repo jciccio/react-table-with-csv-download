@@ -9,7 +9,15 @@ class App extends Component {
 
     let headers = ["number", "position", "name"];
 
-    let table = [ {number: 12, name: "Del Piero", position: "ST"},
+    let table = [ {number: 12, name: "Del Piero", position: "ST", success: true},
+      {number: 21, name: "Pirlo", position: "MC", success: false},
+      {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 7, name: "Nesta", position: "RB", success: true},
+      {number: 4, name: "Cannavaro", position: "CB"},
+      {number: 2, name: "Puyol", position: "CB", success: false},
+      {number: 15, name: "Abate", position: "LB"},
+      {number: 16, name: "Locatelli", position: "MDI"},
+      {number: 1, name: "Buffon", position: "GK"},
       {number: 21, name: "Pirlo", position: "MC"},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB"},
@@ -18,15 +26,7 @@ class App extends Component {
       {number: 15, name: "Abate", position: "LB"},
       {number: 16, name: "Locatelli", position: "MDI"},
       {number: 1, name: "Buffon", position: "GK"},
-       {number: 21, name: "Pirlo", position: "MC"},
-      {number: 10, name: "Ruiz", position: "MDI"},
-      {number: 7, name: "Nesta", position: "RB"},
-      {number: 4, name: "Cannavaro", position: "CB"},
-      {number: 2, name: "Puyol", position: "CB"},
-      {number: 15, name: "Abate", position: "LB"},
-      {number: 16, name: "Locatelli", position: "MDI"},
-      {number: 1, name: "Buffon", position: "GK"},
-       {number: 21, name: "Pirlo", position: "MC"},
+      {number: 21, name: "Pirlo", position: "MC"},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB"},
       {number: 4, name: "Cannavaro", position: "CB"},
@@ -45,15 +45,12 @@ class App extends Component {
     
   }
 
-  
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Table Component</h1>
         </header>
-
 
         <h1> Table example: </h1>
           <TableViewer
@@ -63,8 +60,8 @@ class App extends Component {
             minHeight={0}
             maxHeight={400}
             activateDownloadButton={this.state.activateDownloadButton}
+            
           />
-
       </div>
     );
   }
