@@ -3,18 +3,21 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import "./logViewer.css";
 import MdFileDownload from "react-icons/lib/md/file-download";
-
+import Paginator from 'react-js-paginator';
 
 /**
  * TableViewer component
  *
- * @version 0.1.10
+ * @version 0.2.1
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
  */
 class TableViewer extends Component {
   constructor(props) {
     super(props);
     this.generateAndDownloadCSV = this.generateAndDownloadCSV.bind(this);
+    this.state = {
+      currentPage: 1
+    };
   }
 
   generateAndDownloadCSV() {
@@ -50,7 +53,7 @@ class TableViewer extends Component {
     document.body.removeChild(link);
   }
 
- /* static getDerivedStateFromProps(nextProps, prevState) {
+  /*static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.csvText !== prevState.csvText) {
       let Papa = require("papaparse/papaparse.min.js");
       let data = Papa.parse(nextProps.csvText);
@@ -94,18 +97,59 @@ class TableViewer extends Component {
           <div className="divTableHeading">{this.renderHeaders()}</div>
           <div className="divTableBody">{this.renderBody()}</div>
         </div>
+        {this.renderPagination()}
       </div>
     );
   }
 
-  renderBody() {
+  renderPagination(){
+    if (this.props.pagination){
+      return(
+        <Paginator
+          pageSize={this.props.pagination}
+          totalElements={this.props.content.length}
+          onPageChangeCallback={(e) => {this.pageChange(e)}}
+        />
+      );
+    }
+    else{
+      return null;
+    }
+  }
+
+  pageChange(page){
+    this.setState({currentPage: page});
+  }
+
+  renderAllRows(){
     var rows = this.props.content;
     var headers  = this.props.headers;
+    return rows.map((row, i) => {
+      return this.getRow(row,i);
+    });
+  }
 
+  renderRowPage(rows){
+    let rowsContent = []
+    let pageStart = (this.state.currentPage-1) * this.props.pagination;
+    var rowQty = rows.length; 
+    var headers  = this.props.headers;
+
+    for(var i = pageStart; i < pageStart+this.props.pagination && rows[i]; i++){
+      rowsContent.push(this.getRow(rows[i], i));
+    }
+
+    return rowsContent;
+  }
+
+  renderBody() {
+    var rows = this.props.content;
     if (rows !== null){
-      return rows.map((row, i) => {
-        return this.getRow(row,i);
-      });
+      if(this.props.pagination){
+        return this.renderRowPage(rows);
+      }else{
+        return this.renderAllRows(rows);
+      }
     }
     else {
       return (null);

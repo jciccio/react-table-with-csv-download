@@ -95,7 +95,7 @@ tbody {
 	display: table;
   width: 100%;
   overflow: auto;
-  height: 300px;
+  
   
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -160,3 +160,5 @@ tbody {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+

@@ -81,6 +81,10 @@ For example:
 />
 ```
 
+If you have big tables, you can optionally add a pagination for the table using the prop `pagination`.
+
+![alt text](screenshots/table_w_pagination.png "React JS Table with pagination")
+
 You can also customize the style using the following props:
 
 * `headerCss` => style for headers e.g passing: {{color: "blue", backgroundColor:"#fff"}}
@@ -101,6 +105,7 @@ Changes the background to white and the text to blue
 | headerCss | object   |N | Headers customization |
 | bodyCss | object   |N | Body customizations |
 | filename | String   |N | Name of the downloaded filename (default is logResults.csv) |
+| pagination| int | N | integer that will indicate the max page size for the table
 
 # License 
 
