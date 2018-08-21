@@ -4,6 +4,8 @@ import { Scrollbars } from "react-custom-scrollbars";
 import "./logViewer.css";
 import MdFileDownload from "react-icons/lib/md/file-download";
 import Paginator from 'react-js-paginator';
+import FileSaver from 'file-saver/FileSaver';
+
 
 /**
  * TableViewer component
@@ -21,7 +23,9 @@ class TableViewer extends Component {
   }
 
   generateAndDownloadCSV() {
-    var csvContent = "data:text/csv;charset=utf-8,";
+    let csvType = {type: "data:text/csv;charset=utf-8" };
+    let filename = this.props.filename? this.props.filename : "logResults.csv";
+    var csvContent = "";
     var data = this.props.content;
     var headers = [];
     this.props.content.forEach(function(rowObj) {
@@ -41,16 +45,8 @@ class TableViewer extends Component {
       let row = rowData.join(",");
       csvContent += row + "\r\n";
     });
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    let filename = this.props.filename? this.props.filename : "logResults.csv";
-    
-    link.setAttribute("download", filename);
-    link.innerHTML = "Download";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    var blob = new Blob([csvContent], csvType);
+    FileSaver.saveAs(blob, filename);
   }
 
   /*static getDerivedStateFromProps(nextProps, prevState) {
