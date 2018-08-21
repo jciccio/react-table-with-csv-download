@@ -165,10 +165,37 @@ class TableViewer extends Component {
     )
   }
 
+  renderLineNumber(i){
+    return (
+      <div 
+        key={`table_row_number_${i}`} 
+        className="divTableCell">
+        {i}
+      </div>
+    )
+  }
+
+  renderNumberHeader(headerCss){
+    if(this.props.renderLineNumber){
+      return (
+        <div key={`table_header_line`} className="divTableCell" style={headerCss}>
+          Row
+        </div>
+      );
+    }
+    else{
+      return null;
+    }
+  }
+
   renderRow(row, i){
     var headers = this.props.headers;
     if (row){
-      var rowContent = headers.map((header, element) => {
+      let rowData = []
+      if(this.props.renderLineNumber){
+        rowData.push(this.renderLineNumber(i+1));
+      }
+      let rowContent = headers.map((header, element) => {
         return (
           <div 
           key={`table_row_${i}_cell_${element}`} 
@@ -177,7 +204,7 @@ class TableViewer extends Component {
           </div>
         )
       });
-      return rowContent;
+      return [...rowData, ...rowContent];
     }
     else {
       return null;
@@ -196,6 +223,7 @@ class TableViewer extends Component {
     if (headers){
       return (
         <div className="divTableRow">
+        {this.renderNumberHeader(headerCss)}
         {headers.map(function(header, index) {
           return (
             <div key={`table_header_${index}`} className="divTableCell" style={headerCss}>

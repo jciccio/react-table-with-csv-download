@@ -58,9 +58,10 @@ class App extends Component {
             content={this.state.table}
             headers={this.state.headers}
             minHeight={0}
-
+            maxHeight={400}
             activateDownloadButton={this.state.activateDownloadButton}
             pagination={4}
+            renderLineNumber
           />
       </div>
     );
