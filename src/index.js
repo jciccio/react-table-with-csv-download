@@ -100,11 +100,17 @@ class TableViewer extends Component {
 
   renderPagination(){
     if (this.props.pagination){
+      var boxStyle = this.props.pageBoxStyle ? this.props.pageBoxStyle: {border: 0, color: 'black', padding: 3, fontSize: 16};
+      var activeStyle = this.props.activePageBoxStyle ? this.props.activePageBoxStyle: {fontWeight: 'bolder', color: 'green'}
+      var pagesDisplay = this.props.maxPagesToDisplay ? this.props.maxPagesToDisplay : 5;
       return(
         <Paginator
           pageSize={this.props.pagination}
           totalElements={this.props.content.length}
           onPageChangeCallback={(e) => {this.pageChange(e)}}
+          pageBoxStyle={boxStyle}
+          activePageBoxStyle={activeStyle}
+          maxPagesToDisplay={pagesDisplay}
         />
       );
     }
@@ -179,7 +185,7 @@ class TableViewer extends Component {
     if(this.props.renderLineNumber){
       return (
         <div key={`table_header_line`} className="divTableCell" style={headerCss}>
-          Row
+          Line
         </div>
       );
     }

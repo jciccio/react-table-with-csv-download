@@ -105,8 +105,11 @@ Changes the background to white and the text to blue
 | headerCss | object   |N | Headers customization |
 | bodyCss | object   |N | Body customizations |
 | filename | String   |N | Name of the downloaded filename (default is logResults.csv) |
-| pagination| int | N | integer that will indicate the max page size for the table |
 | renderLineNumber| present | N | render row number at the left of the table |
+| pagination| int | N | integer that will indicate the max page size for the table |
+| pageBoxStyle| object | N | customize style of pagination box objects |
+| activePageBoxStyle| object | N | customize style of active box |
+| maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
 
 # License 
 
