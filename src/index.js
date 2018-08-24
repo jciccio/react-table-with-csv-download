@@ -9,8 +9,6 @@ import FileSaver from 'file-saver/FileSaver';
 
 /**
  * TableViewer component
- *
- * @version 0.2.1
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
  */
 class TableViewer extends Component {
@@ -40,7 +38,11 @@ class TableViewer extends Component {
       }
       var rowData = [];
       for (var i in headers) {
-        rowData.push(rowObj[headers[i]]);
+        let data = rowObj[headers[i]];
+        if (data && typeof data == "string" && data.indexOf(",") >= 0 ){
+          data = `"${data}"`;
+        }
+        rowData.push(data);
       }
       let row = rowData.join(",");
       csvContent += row + "\r\n";
@@ -73,7 +75,7 @@ class TableViewer extends Component {
             download={this.props.csvFileName}
             onClick={this.generateAndDownloadCSV}
           >
-            <MdFileDownload size={30} color="green" /> {this.props.downloadName ? his.props.downloadName : "Download Table Data"}
+            <MdFileDownload size={30} color="green" /> {this.props.downloadName ? this.props.downloadName : "Download Table Data"}
           </button>
         </div>
       );
@@ -89,7 +91,7 @@ class TableViewer extends Component {
       <div className="logViewer">
         {this.renderStats()}
         {this.renderDownload()}
-        <div className="divTable"  style={height}>
+        <div className="divTable" style={height}>
           <div className="divTableHeading">{this.renderHeaders()}</div>
           <div className="divTableBody">{this.renderBody()}</div>
         </div>

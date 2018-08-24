@@ -111,6 +111,10 @@ Changes the background to white and the text to blue
 | activePageBoxStyle| object | N | customize style of active box |
 | maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
 
+
+#What's new
+* Fixed a bug when creating a CSV file with commas in the data.
+
 # License 
 
 Licensed under the MIT License.
