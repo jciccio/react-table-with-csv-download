@@ -113,6 +113,8 @@ Changes the background to white and the text to blue
 
 
 #What's new
+* Max Height fixed
+* Pagination styles updated
 * Fixed a bug when creating a CSV file with commas in the data.
 
 # License 

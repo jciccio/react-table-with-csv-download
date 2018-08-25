@@ -86,7 +86,7 @@ class TableViewer extends Component {
   }
 
   render() {
-    var height = {height: this.props.maxHeight}
+    var height = {maxHeight: this.props.maxHeight}
     return (
       <div className="logViewer">
         {this.renderStats()}
@@ -102,8 +102,8 @@ class TableViewer extends Component {
 
   renderPagination(){
     if (this.props.pagination){
-      var boxStyle = this.props.pageBoxStyle ? this.props.pageBoxStyle: {border: 0, color: 'black', padding: 3, fontSize: 16};
-      var activeStyle = this.props.activePageBoxStyle ? this.props.activePageBoxStyle: {fontWeight: 'bolder', color: 'green'}
+      var boxStyle = this.props.pageBoxStyle ? this.props.pageBoxStyle: {};
+      var activeStyle = this.props.activePageBoxStyle ? this.props.activePageBoxStyle: {}
       var pagesDisplay = this.props.maxPagesToDisplay ? this.props.maxPagesToDisplay : 5;
       return(
         <Paginator
