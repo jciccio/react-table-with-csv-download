@@ -106,13 +106,22 @@ Changes the background to white and the text to blue
 | bodyCss | object   |N | Body customizations |
 | filename | String   |N | Name of the downloaded filename (default is logResults.csv) |
 | renderLineNumber| present | N | render row number at the left of the table |
+| reverseLineNumber| present | N | reverse line number to start from last (depends on reverseLineNumber) |
 | pagination| int | N | integer that will indicate the max page size for the table |
 | pageBoxStyle| object | N | customize style of pagination box objects |
 | activePageBoxStyle| object | N | customize style of active box |
 | maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
 
 
+
 #What's new
+v.0.3.16
+* Small default styling improvements
+
+v0.3.14
+* Added reverse line number
+
+v0.3.13
 * Max Height fixed
 * Pagination styles updated
 * Fixed a bug when creating a CSV file with commas in the data.

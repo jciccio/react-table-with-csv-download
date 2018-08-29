@@ -6,6 +6,7 @@ import MdFileDownload from "react-icons/lib/md/file-download";
 import Paginator from 'react-js-paginator';
 import FileSaver from 'file-saver/FileSaver';
 
+import PropTypes from 'prop-types';
 
 /**
  * TableViewer component
@@ -199,9 +200,13 @@ class TableViewer extends Component {
   renderRow(row, i){
     var headers = this.props.headers;
     if (row){
-      let rowData = []
+      let rowData = [];
       if(this.props.renderLineNumber){
-        rowData.push(this.renderLineNumber(i+1));
+        let number = i+1;
+        if (this.props.reverseLineNumber){
+          number = this.props.content.length - i;
+        }
+        rowData.push(this.renderLineNumber(number));
       }
       let rowContent = headers.map((header, element) => {
         return (
@@ -272,7 +277,7 @@ class TableViewer extends Component {
       return null;
     }
   }
-
 }
+
 
 export default TableViewer;

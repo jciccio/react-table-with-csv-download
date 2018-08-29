@@ -33,7 +33,7 @@
   color: #000;
   font-weight: bold;
   font-family: sans-serif;
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   background-color: #0F991B;
   color: white;
   width: inline-block;
@@ -121,7 +121,7 @@ tbody {
 	font-weight: bold;
 }
 .divTableCell, .divTableHead {
-	border: 1px solid #999999;
+	border: 1px solid #fff;
 	display: table-cell;
 	padding: 3px 10px;
 }
