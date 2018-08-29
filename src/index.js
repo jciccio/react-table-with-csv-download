@@ -70,9 +70,10 @@ class TableViewer extends Component {
 
   renderDownload() {
     if (this.props.activateDownloadButton) {
+      let buttonStyle = this.props.downloadButtonStyle ? this.props.downloadButtonStyle : {};
       return (
         <div className="csvFileDownloader">
-          <button
+          <button style={buttonStyle}
             download={this.props.csvFileName}
             onClick={this.generateAndDownloadCSV}
           >

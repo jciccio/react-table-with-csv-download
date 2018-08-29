@@ -161,4 +161,23 @@ tbody {
     100% { transform: rotate(360deg); }
 }
 
+button{
+  border: 3px solid #e7e7e7;
+  background-color: #e7e7e7;
+  color: #000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #FFF; /* Green */
+    color: #000;
+}
+
+
 

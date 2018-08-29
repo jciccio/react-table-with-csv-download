@@ -111,10 +111,15 @@ Changes the background to white and the text to blue
 | pageBoxStyle| object | N | customize style of pagination box objects |
 | activePageBoxStyle| object | N | customize style of active box |
 | maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
+| downloadButtonStyle| object | N | download button customizations |
 
 
 
 #What's new
+v.0.3.17
+* Changed default download button
+* New prop for download button styling (downloadButtonStyle)
+
 v.0.3.16
 * Small default styling improvements
 
