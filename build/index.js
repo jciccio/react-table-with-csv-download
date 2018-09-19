@@ -64,7 +64,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -267,6 +267,41 @@ process.umask = function() { return 0; };
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(24)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(23)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -306,7 +341,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -366,7 +401,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -385,13 +420,13 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var prefix = __webpack_require__(19)
-var toCamelCase = __webpack_require__(35)
+var prefix = __webpack_require__(21)
+var toCamelCase = __webpack_require__(36)
 var cache = { 'float': 'cssFloat' }
-var addPxToStyle = __webpack_require__(13)
+var addPxToStyle = __webpack_require__(15)
 
 function style (element, property, value) {
   var camel = cache[property]
@@ -452,7 +487,7 @@ module.exports.get = function (element, properties) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -466,7 +501,7 @@ module.exports.get = function (element, properties) {
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -521,42 +556,75 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+"use strict";
 
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
 
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(22)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(21)();
-}
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var IconBase = function IconBase(_ref, _ref2) {
+  var children = _ref.children;
+  var color = _ref.color;
+  var size = _ref.size;
+  var style = _ref.style;
+  var width = _ref.width;
+  var height = _ref.height;
+
+  var props = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'style', 'width', 'height']);
+
+  var _ref2$reactIconBase = _ref2.reactIconBase;
+  var reactIconBase = _ref2$reactIconBase === undefined ? {} : _ref2$reactIconBase;
+
+  var computedSize = size || reactIconBase.size || '1em';
+  return _react2.default.createElement('svg', _extends({
+    children: children,
+    fill: 'currentColor',
+    preserveAspectRatio: 'xMidYMid meet',
+    height: height || computedSize,
+    width: width || computedSize
+  }, reactIconBase, props, {
+    style: _extends({
+      verticalAlign: 'middle',
+      color: color || reactIconBase.color
+    }, reactIconBase.style || {}, style)
+  }));
+};
+
+IconBase.propTypes = {
+  color: _propTypes2.default.string,
+  size: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  style: _propTypes2.default.object
+};
+
+IconBase.contextTypes = {
+  reactIconBase: _propTypes2.default.shape(IconBase.propTypes)
+};
+
+exports.default = IconBase;
+module.exports = exports['default'];
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/* FileSaver.js
@@ -742,7 +810,7 @@ var saveAs = saveAs || (function(view) {
 
 if (typeof module !== "undefined" && module.exports) {
   module.exports.saveAs = saveAs;
-} else if (("function" !== "undefined" && __webpack_require__(38) !== null) && (__webpack_require__(39) !== null)) {
+} else if (("function" !== "undefined" && __webpack_require__(39) !== null) && (__webpack_require__(40) !== null)) {
   !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
     return saveAs;
   }.call(exports, __webpack_require__, exports, module),
@@ -751,7 +819,7 @@ if (typeof module !== "undefined" && module.exports) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -762,7 +830,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Scrollbars = undefined;
 
-var _Scrollbars = __webpack_require__(25);
+var _Scrollbars = __webpack_require__(27);
 
 var _Scrollbars2 = _interopRequireDefault(_Scrollbars);
 
@@ -772,7 +840,7 @@ exports["default"] = _Scrollbars2["default"];
 exports.Scrollbars = _Scrollbars2["default"];
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -788,7 +856,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactIconBase = __webpack_require__(32);
+var _reactIconBase = __webpack_require__(8);
 
 var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
 
@@ -810,7 +878,45 @@ exports.default = MdFileDownload;
 module.exports = exports['default'];
 
 /***/ }),
-/* 11 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(8);
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MdSearch = function MdSearch(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm15.9 23.4c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.3-7.5 7.5 3.3 7.5 7.5 7.5z m10 0l8.2 8.2-2.5 2.5-8.2-8.2v-1.4l-0.5-0.4c-1.9 1.6-4.4 2.5-7 2.5-6.1 0-10.9-4.7-10.9-10.7s4.8-10.9 10.9-10.9 10.7 4.8 10.7 10.9c0 2.6-0.9 5.1-2.5 7l0.4 0.5h1.4z' })
+        )
+    );
+};
+
+exports.default = MdSearch;
+module.exports = exports['default'];
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -949,6 +1055,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(1);
@@ -959,6 +1067,8 @@ __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -968,7 +1078,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Paginator component
  *
- * @version 0.0.1
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
  */
 var Paginator = function (_Component) {
@@ -981,7 +1090,7 @@ var Paginator = function (_Component) {
 
     _this.state = {
       currentPage: 1,
-      maxPagesToDisplay: 5
+      maxPagesToDisplay: _this.props.maxPagesToDisplay ? _this.props.maxPagesToDisplay : 5
     };
     //Props:
     // 1. Page size => pageSize
@@ -1023,14 +1132,25 @@ var Paginator = function (_Component) {
     value: function renderRange() {
       var pagesData = [];
       var totalPages = this.getTotalPages();
-      var startingPage = this.state.currentPage - 2 > 0 ? this.state.currentPage - 2 : 1;
-      startingPage = totalPages - startingPage < this.state.maxPagesToDisplay ? startingPage - (this.state.maxPagesToDisplay - (totalPages - startingPage)) : startingPage;
+      console.log("Total pages: " + totalPages);
+      var startingPage = this.state.currentPage - parseInt(this.state.maxPagesToDisplay / 2) > 0 ? this.state.currentPage - parseInt(this.state.maxPagesToDisplay / 2) : 1;
 
-      pagesData.push(this.renderFirst());
-      for (var i = startingPage; i <= startingPage + this.state.maxPagesToDisplay && i <= totalPages; i++) {
+      startingPage = totalPages - startingPage < this.state.maxPagesToDisplay ? startingPage - (this.state.maxPagesToDisplay - (totalPages - startingPage)) + 1 : startingPage;
+
+      if (startingPage != 1 || this.props.firstArrowAlwaysVisible) {
+        pagesData.push(this.renderFirst());
+      }
+
+      console.log("Starting page: " + startingPage);
+      console.log("startingPage+this.state.maxPagesToDisplay: " + (startingPage + this.state.maxPagesToDisplay));
+      for (var i = startingPage; i < startingPage + this.state.maxPagesToDisplay && i <= totalPages; i++) {
+        console.log("in for: " + i);
         pagesData.push(this.renderPage(i));
       }
-      pagesData.push(this.renderLast());
+
+      if (startingPage + this.state.maxPagesToDisplay - 1 < totalPages || this.props.lastArrowAlwaysVisible) {
+        pagesData.push(this.renderLast());
+      }
       return pagesData;
     }
   }, {
@@ -1042,20 +1162,24 @@ var Paginator = function (_Component) {
   }, {
     key: "renderBox",
     value: function renderBox(number, symbol) {
-      var _this2 = this;
+      var _this2 = this,
+          _React$createElement;
 
       var active = number == this.state.currentPage ? "activePage" : "";
+      var activeStyle = {};
+      if (active.length > 0 && this.props.activePageBoxStyle) {
+        activeStyle = this.props.activePageBoxStyle;
+      }
       return _react2.default.createElement(
         "div",
-        { className: "pageBox", key: "page_" + number + "_" + symbol },
+        { style: _extends({}, this.props.pageBoxStyle, activeStyle), className: "pageBox " + active, key: "page_" + number + "_" + symbol },
         _react2.default.createElement(
           "button",
-          {
-            className: "" + active,
-            onClick: function onClick(e) {
-              _this2.changePage(number);
-            }
-          },
+          (_React$createElement = { style: this.props.pageBoxStyle,
+            className: "" + active
+          }, _defineProperty(_React$createElement, "style", activeStyle), _defineProperty(_React$createElement, "onClick", function onClick(e) {
+            _this2.changePage(number);
+          }), _React$createElement),
           symbol
         )
       );
@@ -1064,7 +1188,12 @@ var Paginator = function (_Component) {
     key: "renderFirst",
     value: function renderFirst() {
       if (this.getTotalPages() > this.state.maxPagesToDisplay) {
-        return this.renderBox(1, "<<");
+        var symbol = "<<";
+        if (this.props.firstArrowSymbol) {
+          symbol = this.props.firstArrowSymbol;
+        }
+
+        return this.renderBox(1, symbol);
       } else {
         return null;
       }
@@ -1074,7 +1203,11 @@ var Paginator = function (_Component) {
     value: function renderLast() {
       var totalPages = this.getTotalPages();
       if (totalPages > this.state.maxPagesToDisplay) {
-        return this.renderBox(totalPages, ">>");
+        var symbol = ">>";
+        if (this.props.lastArrowSymbol) {
+          symbol = this.props.lastArrowSymbol;
+        }
+        return this.renderBox(totalPages, symbol);
       } else {
         return null;
       }
@@ -1108,7 +1241,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, ".paginator{\n  width: 100%;\n  float: left;\n  margin: 5px 0;\n}\n\n.pageBox{\n  float: left;\n  padding: 5px 10px;\n  border: 1px solid grey;\n}\n\n.pageBox button{\n  border: none;\n  font-size: 13px;\n  outline: none;\n}\n\n.activePage{\n  color: blue;\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".paginator{\n  width: 100%;\n  float: left;\n  margin: 5px 0;\n}\n\n.pageBox{\n  float: left;\n  padding: 5px 10px;\n  border: 1px solid #e8e9ea;\n  margin-left: -1px;\n}\n\n.pageBox button{\n  border: none;\n  font-size: 13px;\n  outline: none;\n\n}\n\n.activePage{\n  background-color: #87b5ff;\n  color: #fff;\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -1224,14 +1357,17 @@ var isOldIE = memoize(function () {
 	return window && document && document.all && !window.atob;
 });
 
-var getTarget = function (target) {
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
   return document.querySelector(target);
 };
 
 var getElement = (function (fn) {
 	var memo = {};
 
-	return function(target) {
+	return function(target, parent) {
                 // If passing function in options, then use it for resolve "head" element.
                 // Useful for Shadow Root style i.e
                 // {
@@ -1241,7 +1377,7 @@ var getElement = (function (fn) {
                         return target();
                 }
                 if (typeof memo[target] === "undefined") {
-			var styleTarget = getTarget.call(this, target);
+			var styleTarget = getTarget.call(this, target, parent);
 			// Special case to return head of iframe instead of iframe itself
 			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
 				try {
@@ -1382,7 +1518,7 @@ function insertStyleElement (options, style) {
 	} else if (options.insertAt === "bottom") {
 		target.appendChild(style);
 	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
-		var nextSibling = getElement(options.insertInto + " " + options.insertAt.before);
+		var nextSibling = getElement(options.insertAt.before, target);
 		target.insertBefore(style, nextSibling);
 	} else {
 		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
@@ -1404,6 +1540,13 @@ function createStyleElement (options) {
 
 	if(options.attrs.type === undefined) {
 		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
 	}
 
 	addAttrs(style, options.attrs);
@@ -1430,6 +1573,14 @@ function addAttrs (el, attrs) {
 	Object.keys(attrs).forEach(function (key) {
 		el.setAttribute(key, attrs[key]);
 	});
+}
+
+function getNonce() {
+	if (false) {
+		return null;
+	}
+
+	return __webpack_require__.nc;
 }
 
 function addStyle (obj, options) {
@@ -1680,11 +1831,11 @@ module.exports = function (css) {
 /******/ ]);
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(15);
+var content = __webpack_require__(17);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1698,7 +1849,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(33)(content, options);
+var update = __webpack_require__(34)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1730,7 +1881,7 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /* The following list is defined in React's core */
@@ -1776,7 +1927,7 @@ module.exports = function(name, value) {
 };
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1792,21 +1943,29 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCustomScrollbars = __webpack_require__(9);
+var _reactCustomScrollbars = __webpack_require__(10);
 
-__webpack_require__(12);
+__webpack_require__(14);
 
-var _fileDownload = __webpack_require__(10);
+var _fileDownload = __webpack_require__(11);
 
 var _fileDownload2 = _interopRequireDefault(_fileDownload);
 
-var _reactJsPaginator = __webpack_require__(11);
+var _search = __webpack_require__(12);
+
+var _search2 = _interopRequireDefault(_search);
+
+var _reactJsPaginator = __webpack_require__(13);
 
 var _reactJsPaginator2 = _interopRequireDefault(_reactJsPaginator);
 
-var _FileSaver = __webpack_require__(8);
+var _FileSaver = __webpack_require__(9);
 
 var _FileSaver2 = _interopRequireDefault(_FileSaver);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1820,10 +1979,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /**
  * TableViewer component
- *
- * @version 0.2.1
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
  */
+
 var TableViewer = function (_Component) {
   _inherits(TableViewer, _Component);
 
@@ -1836,10 +1994,38 @@ var TableViewer = function (_Component) {
     _this.state = {
       currentPage: 1
     };
+
+    if (_this.props.content && _this.props.sortColumn) {
+      _this.sortTable();
+    }
     return _this;
   }
 
   _createClass(TableViewer, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.content !== this.props.content && this.props.sortColumn) {
+        this.sortTable();
+      }
+    }
+  }, {
+    key: "sortTable",
+    value: function sortTable() {
+      var criteria = this.props.sortColumn;
+      if (criteria) {
+        this.props.content.sort(this.compare(criteria));
+      }
+    }
+  }, {
+    key: "compare",
+    value: function compare(criteria) {
+      return function (a, b) {
+        if (a[criteria] < b[criteria]) return -1;
+        if (a[criteria] > b[criteria]) return 1;
+        return 0;
+      };
+    }
+  }, {
     key: "generateAndDownloadCSV",
     value: function generateAndDownloadCSV() {
       var csvType = { type: "data:text/csv;charset=utf-8" };
@@ -1859,7 +2045,11 @@ var TableViewer = function (_Component) {
         }
         var rowData = [];
         for (var i in headers) {
-          rowData.push(rowObj[headers[i]]);
+          var _data = rowObj[headers[i]];
+          if (_data && typeof _data == "string" && _data.indexOf(",") >= 0) {
+            _data = "\"" + _data + "\"";
+          }
+          rowData.push(_data);
         }
         var row = rowData.join(",");
         csvContent += row + "\r\n";
@@ -1867,38 +2057,23 @@ var TableViewer = function (_Component) {
       var blob = new Blob([csvContent], csvType);
       _FileSaver2.default.saveAs(blob, filename);
     }
-
-    /*static getDerivedStateFromProps(nextProps, prevState) {
-      if (nextProps.csvText !== prevState.csvText) {
-        let Papa = require("papaparse/papaparse.min.js");
-        let data = Papa.parse(nextProps.csvText);
-        return { 
-          csv: data,
-          csvText: nextProps.csvText
-        }
-      }  
-      return null;
-    }
-     shouldComponentUpdate(nextProps, nextState){
-      return (this.state.csvText !== nextState.csvText);
-    }*/
-
   }, {
     key: "renderDownload",
     value: function renderDownload() {
       if (this.props.activateDownloadButton) {
+        var buttonStyle = this.props.downloadButtonStyle ? this.props.downloadButtonStyle : {};
         return _react2.default.createElement(
           "div",
           { className: "csvFileDownloader" },
           _react2.default.createElement(
             "button",
-            {
+            { style: buttonStyle,
               download: this.props.csvFileName,
               onClick: this.generateAndDownloadCSV
             },
             _react2.default.createElement(_fileDownload2.default, { size: 30, color: "green" }),
             " ",
-            this.props.downloadName ? his.props.downloadName : "Download Table Data"
+            this.props.downloadName ? this.props.downloadName : "Download Table Data"
           )
         );
       } else {
@@ -1908,12 +2083,31 @@ var TableViewer = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var height = { height: this.props.maxHeight };
+      var height = { maxHeight: this.props.maxHeight };
       return _react2.default.createElement(
         "div",
         { className: "logViewer" },
+        _react2.default.createElement(
+          "h2",
+          { className: "tableTitle" },
+          this.props.title
+        ),
         this.renderStats(),
         this.renderDownload(),
+        _react2.default.createElement(
+          "div",
+          { className: "search-container" },
+          _react2.default.createElement(
+            "form",
+            null,
+            _react2.default.createElement("input", { type: "text", placeholder: "Search..", name: "search" }),
+            _react2.default.createElement(
+              "button",
+              { type: "submit" },
+              _react2.default.createElement(_search2.default, null)
+            )
+          )
+        ),
         _react2.default.createElement(
           "div",
           { className: "divTable", style: height },
@@ -1937,13 +2131,23 @@ var TableViewer = function (_Component) {
       var _this2 = this;
 
       if (this.props.pagination) {
-        return _react2.default.createElement(_reactJsPaginator2.default, {
-          pageSize: this.props.pagination,
-          totalElements: this.props.content.length,
-          onPageChangeCallback: function onPageChangeCallback(e) {
-            _this2.pageChange(e);
-          }
-        });
+        var boxStyle = this.props.pageBoxStyle ? this.props.pageBoxStyle : {};
+        var activeStyle = this.props.activePageBoxStyle ? this.props.activePageBoxStyle : {};
+        var pagesDisplay = this.props.maxPagesToDisplay ? this.props.maxPagesToDisplay : 5;
+        if (this.props.content.length <= this.props.pagination) {
+          return null;
+        } else {
+          return _react2.default.createElement(_reactJsPaginator2.default, {
+            pageSize: this.props.pagination,
+            totalElements: this.props.content.length,
+            onPageChangeCallback: function onPageChangeCallback(e) {
+              _this2.pageChange(e);
+            },
+            pageBoxStyle: boxStyle,
+            activePageBoxStyle: activeStyle,
+            maxPagesToDisplay: pagesDisplay
+          });
+        }
       } else {
         return null;
       }
@@ -2036,7 +2240,11 @@ var TableViewer = function (_Component) {
       if (row) {
         var rowData = [];
         if (this.props.renderLineNumber) {
-          rowData.push(this.renderLineNumber(i + 1));
+          var number = i + 1;
+          if (this.props.reverseLineNumber) {
+            number = this.props.content.length - i;
+          }
+          rowData.push(this.renderLineNumber(number));
         }
         var rowContent = headers.map(function (header, element) {
           return _react2.default.createElement(
@@ -2130,24 +2338,43 @@ var TableViewer = function (_Component) {
   return TableViewer;
 }(_react.Component);
 
+TableViewer.propTypes = {
+  content: _propTypes2.default.object.isRequired,
+  headers: _propTypes2.default.array.isRequired,
+  minHeight: _propTypes2.default.number.isRequired,
+  maxHeight: _propTypes2.default.number.isRequired,
+  activateDownloadButton: _propTypes2.default.bool,
+  headerCss: _propTypes2.default.object,
+  bodyCss: _propTypes2.default.object,
+  filename: _propTypes2.default.string,
+  renderLineNumber: _propTypes2.default.bool,
+  reverseLineNumber: _propTypes2.default.bool,
+  pagination: _propTypes2.default.number,
+  pageBoxStyle: _propTypes2.default.object,
+  activePageBoxStyle: _propTypes2.default.object,
+  maxPagesToDisplay: _propTypes2.default.number,
+  downloadButtonStyle: _propTypes2.default.object,
+  sortColumn: _propTypes2.default.string
+};
+
 exports.default = TableViewer;
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(16)(false);
+exports = module.exports = __webpack_require__(18)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".logViewer{\n  margin: 0 auto;\n  font-family: Helvetica;\n  font-size: 14px;\n}\n\n.logViewerTable{\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px 0;\n  width: 100%;\n\n}\n\n.header{\n  /*width: inherit;*/\n /* padding: 0 8px;*/\n}\n\n.header1{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.header2{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.logViewerTableHeader{\n  border: 2px solid;\n  text-align: center;\n  color: #000;\n  font-weight: bold;\n  font-family: sans-serif;\n  border: 1px solid #ddd;\n  background-color: #0F991B;\n  color: white;\n  width: inline-block;\n  padding: 4px 8px;\n  font-weight: bold;\n\n /*   width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\n.logViewerBody:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.logViewerTableBody td {\n  padding: 0px;\n  border: 1px solid #ddd;\n}\n\n.logViewerSuccess_true{\n  color:#0b8e07;\n}\n\n.logViewerSuccess_false{\n  color:#8e0707;\n}\n\n.logViewerSuccess_undefined{\n  color:#000;\n}\n\n\n.fixed_headers {\n  /*width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 5px;\n  text-align: left;\n}\n\nthead tr {\n   /* display: block;\n    position: relative;*/\n}\n\ntbody {\n /* display: block;*/\n  overflow: auto;\n  width: 100%;\n  height: 300px;\n}\n\n\n.divTable{\n\tdisplay: table;\n  width: 100%;\n  overflow: auto;\n  \n  \n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px;\n}\n.divTableRow {\n\tdisplay: table-row;\n}\n.divTableHeading {\n  border: 2px solid;\n  padding: 5px;\n  text-align: center;\n  font-weight: bold;\n  font-family: sans-serif;\n\n  border: 1px solid #ddd;\n  padding-top: 12px;\n  padding-bottom: 12px;\n  background-color: #38bcc3;\n  color: white;\n  display: table-header-group;\n  \n\tfont-weight: bold;\n}\n.divTableCell, .divTableHead {\n\tborder: 1px solid #999999;\n\tdisplay: table-cell;\n\tpadding: 3px 10px;\n}\n\n.divTableFoot {\n\tbackground-color: #EEE;\n\tdisplay: table-footer-group;\n\tfont-weight: bold;\n}\n.divTableBody {\n\tdisplay: table-row-group;\n}\n\n.divTableRow:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.divTableBody div {\n  padding: 4px;\n  border: 1px solid #ddd;\n}\n\n.loader {\n  border: 3px solid #f3f3f3;\n  border-top: 3px solid #3498db;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  -webkit-animation: spin 1s linear infinite;\n  animation: spin 1s linear infinite;\n  margin: 0 5px;\n  display: inline-flex;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n\n\n", ""]);
+exports.push([module.i, ".logViewer{\n  margin: 0 auto;\n  font-family: Helvetica;\n  font-size: 14px;\n  width: 94%;\n    padding: 0px 0px;\n    overflow: auto;\n    text-align: center;\n    font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n    margin: 10px 3%;\n}\n\n.logViewerTable{\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  margin: 10px 0;\n  width: 100%;\n\n}\n\n.header{\n  /*width: inherit;*/\n /* padding: 0 8px;*/\n}\n\n.header1{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.header2{\n  width: inherit;\n  padding: 0 8px;\n}\n\n.logViewerTableHeader{\n  border: 2px solid;\n  text-align: center;\n  color: #000;\n  font-weight: bold;\n  font-family: sans-serif;\n  border: 1px solid #fff;\n  background-color: #0F991B;\n  color: white;\n  width: inline-block;\n  padding: 4px 8px;\n  font-weight: bold;\n\n /*   width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\n.logViewerBody:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.logViewerTableBody td {\n  padding: 0px;\n  border: 1px solid #ddd;\n}\n\n.logViewerSuccess_true{\n  color:#0b8e07;\n}\n\n.logViewerSuccess_false{\n  color:#8e0707;\n}\n\n.logViewerSuccess_undefined{\n  color:#000;\n}\n\n\n.fixed_headers {\n  /*width: 100%;*/\n  table-layout: fixed;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 5px;\n  text-align: left;\n}\n\nthead tr {\n   /* display: block;\n    position: relative;*/\n}\n\ntbody {\n /* display: block;*/\n  overflow: auto;\n  width: 100%;\n  height: 300px;\n}\n\n\n.divTable{\n  display: table;\n  overflow: auto;\n  text-align: center;\n  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n  width:100%;\n  margin-bottom: 10px;\n}\n.divTableRow {\n\tdisplay: table-row;\n}\n.divTableHeading {\n  border: 2px solid;\n  padding: 5px;\n  text-align: center;\n  font-weight: bold;\n  font-family: sans-serif;\n\n  border: 1px solid #ddd;\n  padding-top: 12px;\n  padding-bottom: 12px;\n  background-color: #38bcc3;\n  color: white;\n  display: table-header-group;\n  \n\tfont-weight: bold;\n}\n.divTableCell, .divTableHead {\n\tborder: 1px solid #fff;\n\tdisplay: table-cell;\n\tpadding: 3px 10px;\n}\n\n.divTableFoot {\n\tbackground-color: #EEE;\n\tdisplay: table-footer-group;\n\tfont-weight: bold;\n}\n.divTableBody {\n\tdisplay: table-row-group;\n}\n\n.divTableRow:nth-child(even){\n  background-color: #f2f2f2;\n}\n\n.divTableBody div {\n  padding: 4px;\n  border: 1px solid #ddd;\n}\n\n.loader {\n  border: 3px solid #f3f3f3;\n  border-top: 3px solid #3498db;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  -webkit-animation: spin 1s linear infinite;\n  animation: spin 1s linear infinite;\n  margin: 0 5px;\n  display: inline-flex;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n.csvFileDownloader{\n  margin-bottom: 10px;\n}\n.csvFileDownloader button{\n  border: 3px solid #e7e7e7;\n  background-color: #e7e7e7;\n  color: #000;\n  padding: 5px 15px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  -webkit-transition-duration: 0.4s; /* Safari */\n  transition-duration: 0.4s;\n}\n\n.csvFileDownloader button:hover {\n    background-color: #FFF; /* Green */\n    color: #000;\n}\n\n.tableTitle{\n  font-weight: 600;\n  font-size: 35px;\n}\n\n/* Search Bar */\n\n\n\n  \n\n a {\n  float: left;\n  display: block;\n  color: black;\n  text-align: center;\n  padding: 14px 16px;\n  text-decoration: none;\n  font-size: 17px;\n}\n\n a:hover {\n  background-color: #ddd;\n  color: black;\n}\n\n a.active {\n  background-color: #2196F3;\n  color: white;\n}\n\n .search-container {\n  float: right;\n}\n\n input[type=text] {\n  padding: 4px;\n  margin-top: 8px;\n  font-size: 17px;\n \n}\n\n.search-container button {\n  float: right;\n  padding: 6px 10px;\n  margin-top: 8px;\n  margin-right: 16px;\n  background: #ddd;\n  font-size: 17px;\n  border: none;\n  cursor: pointer;\n}\n\n.search-container button:hover {\n  background: #ccc;\n}\n\n@media screen and (max-width: 600px) {\n  .search-container {\n    float: none;\n  }\n  .a,  input[type=text], .search-container button {\n    float: none;\n    display: block;\n    text-align: left;\n    width: 100%;\n    margin: 0;\n    padding: 14px;\n  }\n  input[type=text] {\n    border: 1px solid #ccc;  \n  }\n}\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 /*
@@ -2229,7 +2456,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2326,7 +2553,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.12.2
@@ -2369,7 +2596,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports) {
 
 var div = null
@@ -2405,7 +2632,7 @@ module.exports = function prefixStyle (prop) {
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2419,9 +2646,9 @@ module.exports = function prefixStyle (prop) {
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(3);
-  var warning = __webpack_require__(6);
-  var ReactPropTypesSecret = __webpack_require__(4);
+  var invariant = __webpack_require__(4);
+  var warning = __webpack_require__(7);
+  var ReactPropTypesSecret = __webpack_require__(5);
   var loggedTypeFailures = {};
 }
 
@@ -2472,7 +2699,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2485,9 +2712,9 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(3);
-var ReactPropTypesSecret = __webpack_require__(4);
+var emptyFunction = __webpack_require__(3);
+var invariant = __webpack_require__(4);
+var ReactPropTypesSecret = __webpack_require__(5);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -2537,7 +2764,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2550,13 +2777,13 @@ module.exports = function() {
 
 
 
-var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(3);
-var warning = __webpack_require__(6);
-var assign = __webpack_require__(17);
+var emptyFunction = __webpack_require__(3);
+var invariant = __webpack_require__(4);
+var warning = __webpack_require__(7);
+var assign = __webpack_require__(19);
 
-var ReactPropTypesSecret = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(20);
+var ReactPropTypesSecret = __webpack_require__(5);
+var checkPropTypes = __webpack_require__(22);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -3087,10 +3314,10 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(18)
+/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(20)
   , root = typeof window === 'undefined' ? global : window
   , vendors = ['moz', 'webkit']
   , suffix = 'AnimationFrame'
@@ -3166,10 +3393,10 @@ module.exports.polyfill = function(object) {
   object.cancelAnimationFrame = caf
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)))
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3252,7 +3479,7 @@ function renderThumbVerticalDefault(_ref4) {
 }
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3266,43 +3493,43 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _raf2 = __webpack_require__(23);
+var _raf2 = __webpack_require__(25);
 
 var _raf3 = _interopRequireDefault(_raf2);
 
-var _domCss = __webpack_require__(5);
+var _domCss = __webpack_require__(6);
 
 var _domCss2 = _interopRequireDefault(_domCss);
 
 var _react = __webpack_require__(0);
 
-var _propTypes = __webpack_require__(7);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _isString = __webpack_require__(30);
+var _isString = __webpack_require__(32);
 
 var _isString2 = _interopRequireDefault(_isString);
 
-var _getScrollbarWidth = __webpack_require__(29);
+var _getScrollbarWidth = __webpack_require__(31);
 
 var _getScrollbarWidth2 = _interopRequireDefault(_getScrollbarWidth);
 
-var _returnFalse = __webpack_require__(31);
+var _returnFalse = __webpack_require__(33);
 
 var _returnFalse2 = _interopRequireDefault(_returnFalse);
 
-var _getInnerWidth = __webpack_require__(28);
+var _getInnerWidth = __webpack_require__(30);
 
 var _getInnerWidth2 = _interopRequireDefault(_getInnerWidth);
 
-var _getInnerHeight = __webpack_require__(27);
+var _getInnerHeight = __webpack_require__(29);
 
 var _getInnerHeight2 = _interopRequireDefault(_getInnerHeight);
 
-var _styles = __webpack_require__(26);
+var _styles = __webpack_require__(28);
 
-var _defaultRenderElements = __webpack_require__(24);
+var _defaultRenderElements = __webpack_require__(26);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -4051,7 +4278,7 @@ Scrollbars.defaultProps = {
 };
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4128,7 +4355,7 @@ var disableSelectStyleReset = exports.disableSelectStyleReset = {
 };
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4149,7 +4376,7 @@ function getInnerHeight(el) {
 }
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4170,7 +4397,7 @@ function getInnerWidth(el) {
 }
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4181,7 +4408,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = getScrollbarWidth;
 
-var _domCss = __webpack_require__(5);
+var _domCss = __webpack_require__(6);
 
 var _domCss2 = _interopRequireDefault(_domCss);
 
@@ -4212,7 +4439,7 @@ function getScrollbarWidth() {
 }
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4227,7 +4454,7 @@ function isString(maybe) {
 }
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4242,75 +4469,7 @@ function returnFalse() {
 }
 
 /***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(7);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var IconBase = function IconBase(_ref, _ref2) {
-  var children = _ref.children;
-  var color = _ref.color;
-  var size = _ref.size;
-  var style = _ref.style;
-  var width = _ref.width;
-  var height = _ref.height;
-
-  var props = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'style', 'width', 'height']);
-
-  var _ref2$reactIconBase = _ref2.reactIconBase;
-  var reactIconBase = _ref2$reactIconBase === undefined ? {} : _ref2$reactIconBase;
-
-  var computedSize = size || reactIconBase.size || '1em';
-  return _react2.default.createElement('svg', _extends({
-    children: children,
-    fill: 'currentColor',
-    preserveAspectRatio: 'xMidYMid meet',
-    height: height || computedSize,
-    width: width || computedSize
-  }, reactIconBase, props, {
-    style: _extends({
-      verticalAlign: 'middle',
-      color: color || reactIconBase.color
-    }, reactIconBase.style || {}, style)
-  }));
-};
-
-IconBase.propTypes = {
-  color: _propTypes2.default.string,
-  size: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  style: _propTypes2.default.object
-};
-
-IconBase.contextTypes = {
-  reactIconBase: _propTypes2.default.shape(IconBase.propTypes)
-};
-
-exports.default = IconBase;
-module.exports = exports['default'];
-
-/***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -4376,7 +4535,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(34);
+var	fixUrls = __webpack_require__(35);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -4696,7 +4855,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 
@@ -4791,11 +4950,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var space = __webpack_require__(37)
+var space = __webpack_require__(38)
 
 /**
  * Export.
@@ -4818,7 +4977,7 @@ function toCamelCase(string) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 
@@ -4891,11 +5050,11 @@ function uncamelize(string) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var clean = __webpack_require__(36)
+var clean = __webpack_require__(37)
 
 /**
  * Export.
@@ -4918,7 +5077,7 @@ function toSpaceCase(string) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -4927,7 +5086,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -4936,7 +5095,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
 var g;

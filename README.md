@@ -112,15 +112,26 @@ Changes the background to white and the text to blue
 | activePageBoxStyle| object | N | customize style of active box |
 | maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
 | downloadButtonStyle| object | N | download button customizations |
-
+|sortColumn| string |N| Column that you want to sort Asc. (must be in headers prop)|
 
 
 #What's new
-v.0.3.17
+v0.3.23
+* Bug of v0.3.23 fixed, everything should work fine again :)
+
+v0.3.21
+* Tables can be sorted by one column with new prop sortColumn
+
+v0.3.19
+* Pagination not showing anymore if not needed
+* Title will now appear in place
+* Increase of visual appealing :) 
+
+v0.3.17
 * Changed default download button
 * New prop for download button styling (downloadButtonStyle)
 
-v.0.3.16
+v0.3.16
 * Small default styling improvements
 
 v0.3.14

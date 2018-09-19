@@ -3,6 +3,8 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import "./logViewer.css";
 import MdFileDownload from "react-icons/lib/md/file-download";
+import Search from "react-icons/lib/md/search";
+
 import Paginator from 'react-js-paginator';
 import FileSaver from 'file-saver/FileSaver';
 
@@ -12,6 +14,9 @@ import PropTypes from 'prop-types';
  * TableViewer component
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
  */
+
+
+
 class TableViewer extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +24,33 @@ class TableViewer extends Component {
     this.state = {
       currentPage: 1
     };
+
+    if(this.props.content && this.props.sortColumn){
+      this.sortTable()
+    }
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.content !== this.props.content && this.props.sortColumn){
+      this.sortTable();
+    }
+  }
+
+  sortTable(){
+    let criteria = this.props.sortColumn;
+    if (criteria){
+      this.props.content.sort(this.compare(criteria));
+    }
+  }
+
+  compare(criteria) {
+    return (a,b) => {
+      if (a[criteria] < b[criteria])
+        return -1;
+      if (a[criteria] > b[criteria])
+        return 1;
+      return 0;
+    }
   }
 
   generateAndDownloadCSV() {
@@ -52,22 +84,6 @@ class TableViewer extends Component {
     FileSaver.saveAs(blob, filename);
   }
 
-  /*static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.csvText !== prevState.csvText) {
-      let Papa = require("papaparse/papaparse.min.js");
-      let data = Papa.parse(nextProps.csvText);
-      return { 
-        csv: data,
-        csvText: nextProps.csvText
-      }
-    }  
-    return null;
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    return (this.state.csvText !== nextState.csvText);
-  }*/
-
   renderDownload() {
     if (this.props.activateDownloadButton) {
       let buttonStyle = this.props.downloadButtonStyle ? this.props.downloadButtonStyle : {};
@@ -91,8 +107,19 @@ class TableViewer extends Component {
     var height = {maxHeight: this.props.maxHeight}
     return (
       <div className="logViewer">
+        <h2 className="tableTitle">{this.props.title}</h2>
         {this.renderStats()}
         {this.renderDownload()}
+         <div className="search-container">
+        
+        <form>
+          <input type="text" placeholder="Search.." name="search"/>
+          <button type="submit">
+            <Search  /> 
+          </button>
+        </form>
+
+      </div>
         <div className="divTable" style={height}>
           <div className="divTableHeading">{this.renderHeaders()}</div>
           <div className="divTableBody">{this.renderBody()}</div>
@@ -107,16 +134,21 @@ class TableViewer extends Component {
       var boxStyle = this.props.pageBoxStyle ? this.props.pageBoxStyle: {};
       var activeStyle = this.props.activePageBoxStyle ? this.props.activePageBoxStyle: {}
       var pagesDisplay = this.props.maxPagesToDisplay ? this.props.maxPagesToDisplay : 5;
-      return(
-        <Paginator
-          pageSize={this.props.pagination}
-          totalElements={this.props.content.length}
-          onPageChangeCallback={(e) => {this.pageChange(e)}}
-          pageBoxStyle={boxStyle}
-          activePageBoxStyle={activeStyle}
-          maxPagesToDisplay={pagesDisplay}
-        />
-      );
+      if(this.props.content.length <= this.props.pagination){
+        return null;
+      }
+      else{
+        return(
+          <Paginator
+            pageSize={this.props.pagination}
+            totalElements={this.props.content.length}
+            onPageChangeCallback={(e) => {this.pageChange(e)}}
+            pageBoxStyle={boxStyle}
+            activePageBoxStyle={activeStyle}
+            maxPagesToDisplay={pagesDisplay}
+          />
+        );
+      }
     }
     else{
       return null;
@@ -280,5 +312,23 @@ class TableViewer extends Component {
   }
 }
 
+TableViewer.propTypes = {
+  content: PropTypes.object.isRequired,
+  headers: PropTypes.array.isRequired,
+  minHeight: PropTypes.number.isRequired, 
+  maxHeight: PropTypes.number.isRequired,
+  activateDownloadButton: PropTypes.bool,
+  headerCss:PropTypes.object,
+  bodyCss: PropTypes.object,
+  filename:PropTypes.string,
+  renderLineNumber:PropTypes.bool,
+  reverseLineNumber:PropTypes.bool,
+  pagination: PropTypes.number,
+  pageBoxStyle:PropTypes.object,
+  activePageBoxStyle:PropTypes.object,
+  maxPagesToDisplay: PropTypes.number,
+  downloadButtonStyle:PropTypes.object,
+  sortColumn:PropTypes.string
+};
 
 export default TableViewer;

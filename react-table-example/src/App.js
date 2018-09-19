@@ -9,7 +9,7 @@ class App extends Component {
 
     let headers = ["number", "position", "name"];
 
-    let table = [ {number: 12, name: "Del Piero", position: "ST", success: true},
+    let table = [ {number: 12, name:"Buffon", position: "ST", success: true},
       {number: 21, name: "Pirlo", position: "MC", success: false},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB", success: true},
@@ -20,6 +20,34 @@ class App extends Component {
       {number: 1, name: "Buffon", position: "GK"},
       {number: 21, name: "Pirlo", position: "MC"},
       {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 7, name: "Nesta", position: "RB"},
+      {number: 4, name: "Cannavaro", position: "CB"},
+      {number: 2, name: "Puyol", position: "CB"},
+      {number: 15, name: "Abate", position: "LB"},
+      {number: 16, name: "Locatelli", position: "MDI"},
+      {number: 1, name: "Buffon", position: "GK"},
+      {number: 21, name: "Pirlo", position: "MC"},
+      {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 7, name: "Nesta", position: "RB"},
+      {number: 4, name: "Cannavaro", position: "CB"},
+      {number: 2, name: "Puyol", position: "CB"},
+      {number: 15, name: "Abate", position: "LB"},
+      {number: 16, name: "Locatelli", position: "MDI"},
+      {number: 1, name: "Buffon", position: "GK"},      {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 7, name: "Nesta", position: "RB"},
+      {number: 4, name: "Cannavaro", position: "CB"},
+      {number: 2, name: "Puyol", position: "CB"},
+      {number: 15, name: "Abate", position: "LB"},
+      {number: 16, name: "Locatelli", position: "MDI"},
+      {number: 1, name: "Buffon", position: "GK"},
+      {number: 21, name: "Pirlo", position: "MC"},
+      {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 7, name: "Nesta", position: "RB"},
+      {number: 4, name: "Cannavaro", position: "CB"},
+      {number: 2, name: "Puyol", position: "CB"},
+      {number: 15, name: "Abate", position: "LB"},
+      {number: 16, name: "Locatelli", position: "MDI"},
+      {number: 1, name: "Buffon", position: "GK"},      {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB"},
       {number: 4, name: "Cannavaro", position: "CB"},
       {number: 2, name: "Puyol", position: "CB"},
@@ -60,8 +88,10 @@ class App extends Component {
             minHeight={0}
             maxHeight={400}
             activateDownloadButton={this.state.activateDownloadButton}
-            pagination={4}
+            pagination={55}
             renderLineNumber
+            reverseLineNumber
+            sortColumn={"name"}
           />
       </div>
     );
