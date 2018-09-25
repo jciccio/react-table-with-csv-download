@@ -2,6 +2,7 @@
 ![npm](https://img.shields.io/npm/dt/react-js-table-with-csv-dl.svg)
 ![npm](https://img.shields.io/npm/v/react-js-table-with-csv-dl.svg)
 ![npm](https://img.shields.io/npm/l/react-js-table-with-csv-dl.svg)
+![npm](https://img.shields.io/npm/dm/react-js-table-with-csv-dl.svg)
 
 # React-table-with-csv-download
 React JS Table and log viewer with CSV download functionality
@@ -115,9 +116,12 @@ Changes the background to white and the text to blue
 |sortColumn| string |N| Column that you want to sort Asc. (must be in headers prop)|
 
 
-#What's new
+# What's new
+v0.3.25
+* Minor improvements
+
 v0.3.23
-* Bug of v0.3.23 fixed, everything should work fine again :)
+* Bug of v0.3.22 fixed, everything should work fine again :)
 
 v0.3.21
 * Tables can be sorted by one column with new prop sortColumn
