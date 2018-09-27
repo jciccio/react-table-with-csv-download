@@ -148,4 +148,4 @@ v0.3.13
 
 # License 
 
-Licensed under the MIT License.
+Licensed under the MIT License © [jciccio](https://www.npmjs.com/~jciccio)
