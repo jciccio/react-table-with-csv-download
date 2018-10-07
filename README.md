@@ -114,13 +114,16 @@ Changes the background to white and the text to blue
 | maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
 | downloadButtonStyle| object | N | download button customizations |
 |sortColumn| string |N| Column that you want to sort Asc. (must be in headers prop)|
-
+|placeholderSearchText| string |N| Placeholder text to appear in Searchbox |
+|searchEnabled| presence (boolean) |N| Activate search feature|
 
 # What's new
-v0.3.25
-* Minor improvements
 
-v0.3.23
+v0.4.0
+* New optional search feature within the table
+* Minor bug fixing
+
+v0.3.27
 * Bug of v0.3.22 fixed, everything should work fine again :)
 
 v0.3.21

@@ -6,6 +6,7 @@ import MdFileDownload from "react-icons/lib/md/file-download";
 import Search from "react-icons/lib/md/search";
 
 import Paginator from 'react-js-paginator';
+import SearchBar from 'react-js-search';
 import FileSaver from 'file-saver/FileSaver';
 
 import PropTypes from 'prop-types';
@@ -22,13 +23,16 @@ class TableViewer extends Component {
     super(props);
     this.generateAndDownloadCSV = this.generateAndDownloadCSV.bind(this);
     this.state = {
-      currentPage: 1
+      currentPage: 1,
+      searchResults: null
     };
 
     if(this.props.content && this.props.sortColumn){
       this.sortTable()
     }
   }
+
+
 
   componentDidUpdate(prevProps){
     if(prevProps.content !== this.props.content && this.props.sortColumn){
@@ -111,15 +115,9 @@ class TableViewer extends Component {
         {this.renderStats()}
         {this.renderDownload()}
          <div className="search-container">
-        
-        <form>
-          <input type="text" placeholder="Search.." name="search"/>
-          <button type="submit">
-            <Search  /> 
-          </button>
-        </form>
-
-      </div>
+        {this.renderSearch()}
+       
+        </div>
         <div className="divTable" style={height}>
           <div className="divTableHeading">{this.renderHeaders()}</div>
           <div className="divTableBody">{this.renderBody()}</div>
@@ -127,6 +125,37 @@ class TableViewer extends Component {
         {this.renderPagination()}
       </div>
     );
+  }
+
+  onSearch(term, elements){
+    if (term.length > 0){
+      this.setState({searchResults: elements})
+    }
+    else{
+      this.setState({searchResults: null})
+    }
+    this.pageChange(1);
+  }
+
+  renderSearch(){
+    if(this.props.searchEnabled){
+      let search = "Search...";
+      if (this.props.placeholderSearchText){
+        search = this.props.placeholderSearchText;
+      }
+
+      return (
+        <SearchBar 
+          onSearchTextChange={(b,e) => {this.onSearch(b,e)}}
+          onSearchButtonClick={(b,e) => {this.onSearch(b,e)}}
+          placeHolderText={search}
+          data={this.props.content}
+        />
+        )
+    }
+    else{
+      return null;
+    }
   }
 
   renderPagination(){
@@ -138,10 +167,14 @@ class TableViewer extends Component {
         return null;
       }
       else{
+        let totalElements = this.props.content.length;
+        if (this.state.searchResults){
+          totalElements = this.state.searchResults.length
+        }
         return(
           <Paginator
             pageSize={this.props.pagination}
-            totalElements={this.props.content.length}
+            totalElements={totalElements}
             onPageChangeCallback={(e) => {this.pageChange(e)}}
             pageBoxStyle={boxStyle}
             activePageBoxStyle={activeStyle}
@@ -181,7 +214,7 @@ class TableViewer extends Component {
   }
 
   renderBody() {
-    var rows = this.props.content;
+    var rows = this.state.searchResults || this.props.content;
     if (rows !== null){
       if(this.props.pagination){
         return this.renderRowPage(rows);
@@ -313,7 +346,7 @@ class TableViewer extends Component {
 }
 
 TableViewer.propTypes = {
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
   headers: PropTypes.array.isRequired,
   minHeight: PropTypes.number.isRequired, 
   maxHeight: PropTypes.number.isRequired,

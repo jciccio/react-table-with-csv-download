@@ -259,5 +259,11 @@ tbody {
   }
 }
 
+.search-container {
+    float: right;
+    padding-right: 0px;
+    margin-right: -7px;
+}
+
 
 

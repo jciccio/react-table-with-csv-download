@@ -91,6 +91,7 @@ class App extends Component {
             pagination={55}
             renderLineNumber
             reverseLineNumber
+            searchEnabled
             sortColumn={"name"}
           />
       </div>
