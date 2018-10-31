@@ -9,7 +9,7 @@ React JS Table and log viewer with CSV download functionality
 
 # Description
 
-React JS Table and log viewer with CSV download functionality. You can display data table information passing JS objects and an array of dats you want to show and download the full data into a csv file. You can pick what fields of the object you want to display and download the full objects.
+React JS Table and log viewer with Search and CSV download functionality. You can display data table information passing JS objects and an array of dats you want to show and download the full data into a csv file. You can pick what fields of the object you want to display and download the full objects.
 
 
 # How it looks
@@ -116,38 +116,34 @@ Changes the background to white and the text to blue
 |sortColumn| string |N| Column that you want to sort Asc. (must be in headers prop)|
 |placeholderSearchText| string |N| Placeholder text to appear in Searchbox |
 |searchEnabled| presence (boolean) |N| Activate search feature|
+| caseInsensitive | boolean |N| do searches without casing| 
 
 # What's new
+v0.4.11
+* links style fixed
+* Search box fixed
+
+v0.4.10
+* Borders fixed
+* Download button is now on the left
+
+v0.4.9
+* Search default style fixes
+
+v0.4.8
+* CSV generator enhancements: you can now have data with commas
+* JSON objects transformed to Strings are now being generated correctly
+
+v0.4.7
+* Case insensitive searches
+
+v0.4.4
+* CSS issues fix
 
 v0.4.0
 * New optional search feature within the table
 * Minor bug fixing
 
-v0.3.27
-* Bug of v0.3.22 fixed, everything should work fine again :)
-
-v0.3.21
-* Tables can be sorted by one column with new prop sortColumn
-
-v0.3.19
-* Pagination not showing anymore if not needed
-* Title will now appear in place
-* Increase of visual appealing :) 
-
-v0.3.17
-* Changed default download button
-* New prop for download button styling (downloadButtonStyle)
-
-v0.3.16
-* Small default styling improvements
-
-v0.3.14
-* Added reverse line number
-
-v0.3.13
-* Max Height fixed
-* Pagination styles updated
-* Fixed a bug when creating a CSV file with commas in the data.
 
 # License 
 

@@ -1,22 +1,18 @@
 import React, { Component } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-
-import "./logViewer.css";
 import MdFileDownload from "react-icons/lib/md/file-download";
 import Search from "react-icons/lib/md/search";
-
 import Paginator from 'react-js-paginator';
 import SearchBar from 'react-js-search';
 import FileSaver from 'file-saver/FileSaver';
-
 import PropTypes from 'prop-types';
+
+import "./logViewer.css";
 
 /**
  * TableViewer component
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
  */
-
-
 
 class TableViewer extends Component {
   constructor(props) {
@@ -32,7 +28,35 @@ class TableViewer extends Component {
     }
   }
 
+  highlightSyntax(json) {
+    if (json) {
+      json = json
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
 
+      return json.replace(
+        /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
+        function(match) {
+          var cls = "number";
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              cls = "key";
+            } else {
+              cls = "string";
+            }
+          } else if (/true|false/.test(match)) {
+            cls = "boolean";
+          } else if (/null/.test(match)) {
+            cls = "null";
+          }
+          return '<span class="' + cls + '">' + match + "</span>";
+        }
+      );
+    } else {
+      return "";
+    }
+  }
 
   componentDidUpdate(prevProps){
     if(prevProps.content !== this.props.content && this.props.sortColumn){
@@ -77,7 +101,7 @@ class TableViewer extends Component {
       for (var i in headers) {
         let data = rowObj[headers[i]];
         if (data && typeof data == "string" && data.indexOf(",") >= 0 ){
-          data = `"${data}"`;
+          data = `"${data.replace(/"/g, '""')}"`;
         }
         rowData.push(data);
       }
@@ -93,11 +117,15 @@ class TableViewer extends Component {
       let buttonStyle = this.props.downloadButtonStyle ? this.props.downloadButtonStyle : {};
       return (
         <div className="csvFileDownloader">
-          <button style={buttonStyle}
+          <button 
+            style={buttonStyle}
             download={this.props.csvFileName}
             onClick={this.generateAndDownloadCSV}
           >
-            <MdFileDownload size={30} color="green" /> {this.props.downloadName ? this.props.downloadName : "Download Table Data"}
+            <MdFileDownload 
+            size={30} 
+            color="green"/> 
+            {this.props.downloadName ? this.props.downloadName : "Download Table Data"}
           </button>
         </div>
       );
@@ -113,10 +141,12 @@ class TableViewer extends Component {
       <div className="logViewer">
         <h2 className="tableTitle">{this.props.title}</h2>
         {this.renderStats()}
-        {this.renderDownload()}
-         <div className="search-container">
-        {this.renderSearch()}
-       
+
+        <div className="titleContainer">
+          {this.renderDownload()}
+          <div className="search-container">
+            {this.renderSearch()}
+          </div>
         </div>
         <div className="divTable" style={height}>
           <div className="divTableHeading">{this.renderHeaders()}</div>
@@ -144,12 +174,15 @@ class TableViewer extends Component {
         search = this.props.placeholderSearchText;
       }
 
+      let caseInsensitive = this.props.caseInsensitive ? true : false;
+
       return (
         <SearchBar 
           onSearchTextChange={(b,e) => {this.onSearch(b,e)}}
           onSearchButtonClick={(b,e) => {this.onSearch(b,e)}}
           placeHolderText={search}
           data={this.props.content}
+          caseInsensitive={caseInsensitive}
         />
         )
     }
@@ -288,12 +321,6 @@ class TableViewer extends Component {
     else {
       return null;
     }
-   /* 
-    return headers.map(function(header, i) {
-      return (
-        <td className={`header`}>{row[header]}</td>
-      );
-    });*/
   }
 
   renderHeaders() {
