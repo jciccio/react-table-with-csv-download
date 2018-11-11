@@ -6,7 +6,7 @@ import Paginator from 'react-js-paginator';
 import SearchBar from 'react-js-search';
 import FileSaver from 'file-saver/FileSaver';
 import PropTypes from 'prop-types';
-
+import ReactHtmlParser from "react-html-parser";
 import "./logViewer.css";
 
 /**
@@ -28,7 +28,7 @@ class TableViewer extends Component {
     }
   }
 
-  highlightSyntax(json) {
+ highlightSyntax(json) {
     if (json) {
       json = json
         .replace(/&/g, "&amp;")
@@ -38,17 +38,17 @@ class TableViewer extends Component {
       return json.replace(
         /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
         function(match) {
-          var cls = "number";
+          var cls = "hljs-number";
           if (/^"/.test(match)) {
             if (/:$/.test(match)) {
-              cls = "key";
+              cls = "hljs-key";
             } else {
-              cls = "string";
+              cls = "hljs-string";
             }
           } else if (/true|false/.test(match)) {
-            cls = "boolean";
+            cls = "hljs-boolean";
           } else if (/null/.test(match)) {
-            cls = "null";
+            cls = "hljs-null";
           }
           return '<span class="' + cls + '">' + match + "</span>";
         }
@@ -308,13 +308,43 @@ class TableViewer extends Component {
         rowData.push(this.renderLineNumber(number));
       }
       let rowContent = headers.map((header, element) => {
-        return (
-          <div 
-          key={`table_row_${i}_cell_${element}`} 
-          className="divTableCell">
-            {row[header]}
-          </div>
-        )
+
+        let content = row[header];
+        let isJson = false;
+        try {
+          if (isNaN(content)){
+            content = JSON.parse(content);
+            isJson = true;
+          }
+        } catch (e) {
+          content = row[header];
+          isJson = false;
+        }
+
+        if (isJson){
+          let jsonText =JSON.stringify(content,undefined,2);
+          let highlight = this.highlightSyntax(jsonText);
+          let parsedHtml = ReactHtmlParser(highlight, true);
+          return (
+            <div 
+              key={`table_row_${i}_cell_${element}`} 
+              className="divTableCell">
+              <pre>
+                {parsedHtml}
+              </pre>
+            </div>
+          )
+        }
+        else{
+          return (
+            <div 
+              key={`table_row_${i}_cell_${element}`} 
+              className="divTableCell">
+              {content}
+            </div>
+          )
+        }
+        
       });
       return [...rowData, ...rowContent];
     }

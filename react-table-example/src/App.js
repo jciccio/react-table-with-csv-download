@@ -9,11 +9,20 @@ class App extends Component {
 
     let headers = ["number", "position", "name"];
 
-    let table = [ {number: 12, name:"Buffon", position: "ST", success: true},
-      {number: 21, name: "Pirlo", position: "MC", success: false},
+
+    let json = {
+      "Key1": {"id":10,"values":"1-2"},
+      "Key2":{},
+      "Key3":"(Zone 1)",
+      "description":"","array":[100],
+      "array2":[],
+      "Object":[{"id":1000,"values":"K-1"}]};
+
+    let table = [ {number: 12, name:"Buffon", position: JSON.stringify(json), success: true},
+      {number: 21, name: "Pirlo", position: JSON.stringify(json), success: false},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB", success: true},
-      {number: 4, name: "Cannavaro", position: "CB"},
+      {number: 4, name: "Cannavaro", position: JSON.stringify(json)},
       {number: 2, name: "Puyol", position: "CB", success: false},
       {number: 15, name: "Abate", position: "LB"},
       {number: 16, name: "Locatelli", position: "MDI"},
