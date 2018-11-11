@@ -48,7 +48,8 @@ In the above example, will create a table with three columns: `number, name, pos
 Optionally, you can add the key `success` to the object. If value is true, the row will be displayed in green, if it is false will be displayed red.
 
 ```javascript
-let table = [ {number: 12, name: "Del Piero", position: "ST", success: true},
+let table = [ 
+  {number: 12, name: "Del Piero", position: "ST", success: true},
   {number: 21, name: "Pirlo", position: "MC", success: false},
   {number: 10, name: "Ruiz", position: "MDI"},
 ];
@@ -81,6 +82,33 @@ For example:
   activateDownloadButton={this.state.activateDownloadButton}
 />
 ```
+
+You can send a JSON String to a specific cell and will be rendered correctly with different color scheme as shows in the following image:
+
+For assume you have the following JSON:
+
+```javascript
+let json = {
+      "Key1": {"id":10,"values":"1-2"},
+      "Key2":{},
+      "Key3":"(Zone 1)",
+      "description":"","array":[100],
+      "array2":[],
+      "Object":[{"id":1000,"values":"K-1"}]};
+```
+
+By sending the following row to the table:
+
+```javascript
+{ number: 12, 
+  name:"Buffon", 
+  position: JSON.stringify(json), 
+  success: true
+}
+```
+Note the conversion of the JSON using the function stringify(). Then, you'll have the result:
+
+![alt text](screenshots/table_json.png "React JS Table JSON example")
 
 If you have big tables, you can optionally add a pagination for the table using the prop `pagination`.
 
@@ -119,38 +147,11 @@ Changes the background to white and the text to blue
 | caseInsensitive | boolean |N| do searches without casing| 
 
 # What's new
+v0.5.1
+
+
 v0.5.0
 * Table now speaks JSON, you can pass as param a JSON in string format and will be rendered.
 
-v0.4.12
-* Download button CSS fix
-
-v0.4.11
-* links style fixed
-* Search box fixed
-
-v0.4.10
-* Borders fixed
-* Download button is now on the left
-
-v0.4.9
-* Search default style fixes
-
-v0.4.8
-* CSV generator enhancements: you can now have data with commas
-* JSON objects transformed to Strings are now being generated correctly
-
-v0.4.7
-* Case insensitive searches
-
-v0.4.4
-* CSS issues fix
-
-v0.4.0
-* New optional search feature within the table
-* Minor bug fixing
-
-
 # License 
-
 Licensed under the MIT License © [jciccio](https://www.npmjs.com/~jciccio)
