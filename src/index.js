@@ -143,7 +143,12 @@ class TableViewer extends Component {
         {this.renderStats()}
 
         <div className="titleContainer">
+
+          
           {this.renderDownload()}
+
+          {this.renderTopPagination()}
+          
           <div className="search-container">
             {this.renderSearch()}
           </div>
@@ -191,8 +196,15 @@ class TableViewer extends Component {
     }
   }
 
-  renderPagination(){
-    if (this.props.pagination){
+  renderTopPagination(){
+    if (this.props.topPagination){
+      return this.renderPagination(true);
+    }
+    return null;
+  }
+
+  renderPagination(isTop = false){
+    if (this.props.pagination || isTop){
       var boxStyle = this.props.pageBoxStyle ? this.props.pageBoxStyle: {};
       var activeStyle = this.props.activePageBoxStyle ? this.props.activePageBoxStyle: {}
       var pagesDisplay = this.props.maxPagesToDisplay ? this.props.maxPagesToDisplay : 5;
@@ -408,6 +420,7 @@ TableViewer.propTypes = {
   minHeight: PropTypes.number.isRequired, 
   maxHeight: PropTypes.number.isRequired,
   activateDownloadButton: PropTypes.bool,
+  topPaginator: PropTypes.bool,
   headerCss:PropTypes.object,
   bodyCss: PropTypes.object,
   filename:PropTypes.string,

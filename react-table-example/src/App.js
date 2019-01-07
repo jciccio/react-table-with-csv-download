@@ -102,6 +102,7 @@ class App extends Component {
             reverseLineNumber
             searchEnabled
             sortColumn={"name"}
+            topPagination
           />
       </div>
     );

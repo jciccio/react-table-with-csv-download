@@ -168,6 +168,7 @@
 .logViewer .csvFileDownloader{
   margin-bottom: 10px;
   float: left;
+  text-align: left;
 }
 
 
@@ -272,4 +273,13 @@
 
 pre {
   text-align: left;
+}
+
+.paginator{
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.searchComponent{
+  overflow: hidden;
 }
