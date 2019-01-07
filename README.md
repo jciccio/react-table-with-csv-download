@@ -11,10 +11,15 @@ React JS Table and log viewer with CSV download functionality
 
 React JS Table and log viewer with Search and CSV download functionality. You can display data table information passing JS objects and an array of dats you want to show and download the full data into a csv file. You can pick what fields of the object you want to display and download the full objects. Also you can pass a String with a JSON and will be rendered.
 
+**How to thank me?**
+Just click on ⭐️ button :)
 
 # How it looks
 
 ![alt text](screenshots/table.png "React JS Table with download button example")
+
+
+
 
 # Installation
 
