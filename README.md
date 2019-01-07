@@ -85,8 +85,6 @@ For example:
 
 You can send a JSON String to a specific cell and will be rendered correctly with different color scheme as shows in the following image:
 
-For assume you have the following JSON:
-
 ```javascript
 let json = {
       "Key1": {"id":10,"values":"1-2"},
@@ -96,8 +94,16 @@ let json = {
       "array2":[],
       "Object":[{"id":1000,"values":"K-1"}]};
 ```
+  
+Note that you should convert JSON to a String using the function stringify(). Then, you'll have the result:
 
-By sending the following row to the table:
+![alt text](screenshots/table_json.png "React JS Table JSON example")
+
+You can also customise the row's color (red, green or black) by sending the following row to the table with the key `success`:
+
+true -> green
+false -> red
+omit the key and the text will be black by default
 
 ```javascript
 { number: 12, 
@@ -106,11 +112,10 @@ By sending the following row to the table:
   success: true
 }
 ```
-Note the conversion of the JSON using the function stringify(). Then, you'll have the result:
 
-![alt text](screenshots/table_json.png "React JS Table JSON example")
 
 If you have big tables, you can optionally add a pagination for the table using the prop `pagination`.
+
 
 ![alt text](screenshots/table_w_pagination.png "React JS Table with pagination")
 
@@ -137,6 +142,7 @@ Changes the background to white and the text to blue
 | renderLineNumber| present | N | render row number at the left of the table |
 | reverseLineNumber| present | N | reverse line number to start from last (depends on reverseLineNumber) |
 | pagination| int | N | integer that will indicate the max page size for the table |
+| topPagination | boolean |N| show pagination at top of the table| 
 | pageBoxStyle| object | N | customize style of pagination box objects |
 | activePageBoxStyle| object | N | customize style of active box |
 | maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
@@ -147,8 +153,8 @@ Changes the background to white and the text to blue
 | caseInsensitive | boolean |N| do searches without casing| 
 
 # What's new
-v0.5.1
-
+v0.5.3
+* Added prop feature (topPagination) to show pagination at top.
 
 v0.5.0
 * Table now speaks JSON, you can pass as param a JSON in string format and will be rendered.
