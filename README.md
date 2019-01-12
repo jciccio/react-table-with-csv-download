@@ -158,7 +158,7 @@ Changes the background to white and the text to blue
 | caseInsensitive | boolean |N| do searches without casing| 
 
 # What's new
-v0.5.3
+v0.5.5
 * Added prop feature (topPagination) to show pagination at top.
 
 v0.5.0
