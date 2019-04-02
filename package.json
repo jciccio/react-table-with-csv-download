@@ -40,7 +40,7 @@
     "react-dom": "^16.6.3",
     "react-html-parser": "^2.0.2",
     "react-icons": "^2.2.7",
-    "react-js-paginator": "^0.1.7",
+    "react-js-paginator": "^0.1.8",
     "react-js-search": "^0.2.4",
     "style-loader": "^0.21.0"
   },

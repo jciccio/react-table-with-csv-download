@@ -143,12 +143,10 @@ class TableViewer extends Component {
         {this.renderStats()}
 
         <div className="titleContainer">
-
-          
           {this.renderDownload()}
 
+
           {this.renderTopPagination()}
-          
           <div className="search-container">
             {this.renderSearch()}
           </div>
@@ -371,14 +369,14 @@ class TableViewer extends Component {
     if (headers){
       return (
         <div className="divTableRow">
-        {this.renderNumberHeader(headerCss)}
-        {headers.map(function(header, index) {
-          return (
-            <div key={`table_header_${index}`} className="divTableCell" style={headerCss}>
-              {header}
-            </div>
-          );
-        })}
+          {this.renderNumberHeader(headerCss)}
+          {headers.map(function(header, index) {
+            return (
+              <div key={`table_header_${index}`} className="divTableCell" style={headerCss}>
+                {header}
+              </div>
+            );
+          })}
         </div>
       );
     }
