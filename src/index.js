@@ -82,7 +82,9 @@ class TableViewer extends Component {
   }
 
   generateAndDownloadCSV() {
-    let csvType = {encoding:"UTF-8",type:"text/plain;charset=UTF-8"};
+
+    let encoding = this.props.encoding ? this.props.encoding : "UTF-8";
+    let csvType = {encoding:encoding,type:"text/plain;charset="+encoding};
     let filename = this.props.filename? this.props.filename : "logResults.csv";
     var csvContent = "";
     var data = this.props.content;
@@ -429,7 +431,8 @@ TableViewer.propTypes = {
   activePageBoxStyle:PropTypes.object,
   maxPagesToDisplay: PropTypes.number,
   downloadButtonStyle:PropTypes.object,
-  sortColumn:PropTypes.string
+  sortColumn:PropTypes.string,
+  encoding:PropTypes.string
 };
 
 export default TableViewer;

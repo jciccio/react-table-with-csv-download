@@ -138,6 +138,7 @@ Changes the background to white and the text to blue
 | ------------- |:-------------:| -----:|:-----|
 | content      | object | Y |Contents to display on tables |
 | headers      | array (String)   | Y   | Array of strings, these will be used to choose what to show in the table |
+| encoding | String |N| Data encoding for table and file, UTF-8 by default | 
 | minHeight | integer     | Y| Min table desired height |
 | maxHeight | integer   |Y  | Max table desired height |
 | activateDownloadButton | boolean   |Y | Activates download button |
