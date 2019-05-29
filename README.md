@@ -159,6 +159,10 @@ Changes the background to white and the text to blue
 | caseInsensitive | boolean |N| do searches without casing| 
 
 # What's new
+v0.6.01
+ * Added feature to specify the data encoding. Via `encoding` prop.
+ By Default, the encoding is UTF-8 if prop is not passed.
+
 v0.5.8
  * UTF-8 CSV download support
  
