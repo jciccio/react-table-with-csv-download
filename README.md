@@ -158,6 +158,12 @@ Changes the background to white and the text to blue
 | caseInsensitive | boolean |N| do searches without casing| 
 
 # What's new
+v0.5.8
+ * UTF-8 CSV download support
+ 
+v0.5.7
+ * Fixed issue introduced in 5.6 (sorry about that)
+
 v0.5.5
 * Added prop feature (topPagination) to show pagination at top.
 

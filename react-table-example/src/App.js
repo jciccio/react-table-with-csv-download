@@ -19,8 +19,8 @@ class App extends Component {
       "Object":[{"id":1000,"values":"K-1"}]};
 
     let table = [ {number: 12, name:"Buffon", position: JSON.stringify(json), success: true},
-      {number: 21, name: "Pirlo", position: JSON.stringify(json), success: false},
-      {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 21, name: "Pirló", position: JSON.stringify(json), success: false},
+      {number: 10, name: "Rúiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB", success: true},
       {number: 4, name: "Cannavaro", position: JSON.stringify(json)},
       {number: 2, name: "Puyol", position: "CB", success: false},

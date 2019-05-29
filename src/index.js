@@ -82,7 +82,7 @@ class TableViewer extends Component {
   }
 
   generateAndDownloadCSV() {
-    let csvType = {type: "data:text/csv;charset=utf-8" };
+    let csvType = {encoding:"UTF-8",type:"text/plain;charset=UTF-8"};
     let filename = this.props.filename? this.props.filename : "logResults.csv";
     var csvContent = "";
     var data = this.props.content;
