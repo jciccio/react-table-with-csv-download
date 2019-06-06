@@ -1,38 +1,37 @@
-.logViewer{
+.tableWithCSV{
   margin: 0 auto;
   font-family: Helvetica;
   font-size: 14px;
-  width: 94%;
   padding: 0px 0px;
   overflow: auto;
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  margin: 10px 3%;
+  margin: 10px 1%;
 }
 
-.logViewerTable{
+.tableWithCSVTable{
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   margin: 10px 0;
   width: 100%;
 }
 
-.logViewer .header{
+.tableWithCSV .header{
   /*width: inherit;*/
  /* padding: 0 8px;*/
 }
 
-.logViewer .header1{
+.tableWithCSV .header1{
   width: inherit;
   padding: 0 8px;
 }
 
-.logViewer .header2{
+.tableWithCSV .header2{
   width: inherit;
   padding: 0 8px;
 }
 
-.logViewer .logViewerTableHeader{
+.tableWithCSV .tableWithCSVTableHeader{
   border: 2px solid;
   text-align: center;
   color: #000;
@@ -50,52 +49,52 @@
   border-collapse: collapse;
 }
 
-.logViewer .logViewerBody:nth-child(even){
+.tableWithCSV .tableWithCSVBody:nth-child(even){
   background-color: #f2f2f2;
 }
 
-.logViewer .logViewerTableBody td {
+.tableWithCSV .tableWithCSVTableBody td {
   padding: 0px;
   border: 1px solid #ddd;
 }
 
-.logViewer .logViewerSuccess_true{
+.tableWithCSV .tableWithCSVSuccess_true{
   color:#0b8e07;
 }
 
-.logViewer .logViewerSuccess_false{
+.tableWithCSV .tableWithCSVSuccess_false{
   color:#8e0707;
 }
 
-.logViewer .logViewerSuccess_undefined{
+.tableWithCSV .tableWithCSVSuccess_undefined{
   color:#000;
 }
 
-.logViewer .divTableHeading .divTableRow .divTableCell:first-child{
+.tableWithCSV .divTableHeading .divTableRow .divTableCell:first-child{
   border-left: 0px;
 }
 
-.logViewer .divTableHeading .divTableRow .divTableCell:last-child{
+.tableWithCSV .divTableHeading .divTableRow .divTableCell:last-child{
   border-right: 0px;
 }
 
-.logViewer .fixed_headers {
+.tableWithCSV .fixed_headers {
   /*width: 100%;*/
   table-layout: fixed;
   border-collapse: collapse;
 }
 
-.logViewer th, td {
+.tableWithCSV th, td {
   padding: 5px;
   text-align: left;
 }
 
-.logViewer thead tr {
+.tableWithCSV thead tr {
    /* display: block;
     position: relative;*/
 }
 
-.logViewer tbody {
+.tableWithCSV tbody {
  /* display: block;*/
   overflow: auto;
   width: 100%;
@@ -103,7 +102,7 @@
 }
 
 
-.logViewer .divTable{
+.tableWithCSV .divTable{
   display: table;
   overflow: auto;
   text-align: center;
@@ -112,43 +111,43 @@
   margin-bottom: 10px;
 }
 
-.logViewer .divTableRow {
+.tableWithCSV .divTableRow {
 	display: table-row;
 }
 
-.logViewer .divTableHeading {
+.tableWithCSV .divTableHeading {
   padding: 5px;
   background-color: #38bcc3;
   color: white;
   display: table-header-group;
 	font-weight: bold;
 }
-.logViewer .divTableCell, .divTableHead {
+.tableWithCSV .divTableCell, .divTableHead {
 	border: 1px solid #fff;
   display: table-cell;
   padding: 4px 10px;
 }
 
-.logViewer .divTableFoot {
+.tableWithCSV .divTableFoot {
 	background-color: #EEE;
 	display: table-footer-group;
 	font-weight: bold;
 }
 
-.logViewer .divTableBody {
+.tableWithCSV .divTableBody {
 	display: table-row-group;
 }
 
-.logViewer .divTableRow:nth-child(even){
+.tableWithCSV .divTableRow:nth-child(even){
   background-color: #f2f2f2;
 }
 
-.logViewer .divTableBody div {
+.tableWithCSV .divTableBody div {
   padding: 4px;
   border: 1px solid #ddd;
 }
 
-.logViewer .loader {
+.tableWithCSV .loader {
   border: 3px solid #f3f3f3;
   border-top: 3px solid #3498db;
   border-radius: 50%;
@@ -165,7 +164,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.logViewer .csvFileDownloader{
+.tableWithCSV .csvFileDownloader{
   margin-bottom: 10px;
   
   text-align: left;
@@ -173,7 +172,7 @@
 
 
 
-.logViewer .csvFileDownloader button{
+.tableWithCSV .csvFileDownloader button{
   border: 0px solid #e7e7e7;
   background-color: #e7e7e7;
   color: #000;
@@ -187,17 +186,17 @@
   margin-top: 8px;
 }
 
-.logViewer .csvFileDownloader button:hover {
+.tableWithCSV .csvFileDownloader button:hover {
     background-color: #adadad; /* Green */
     color: #FFF;
 }
 
-.logViewer .tableTitle{
+.tableWithCSV .tableTitle{
   font-weight: 600;
   font-size: 35px;
 }
 
-.logViewer a {
+.tableWithCSV a {
   /*float: left;*/
   display: block;
   color: black;
@@ -207,23 +206,23 @@
   font-size: 17px;
 }
 
-.logViewer a:hover {
+.tableWithCSV a:hover {
   background-color: #ddd;
   color: black;
 }
 
-.logViewer a.active {
+.tableWithCSV a.active {
   background-color: #2196F3;
   color: white;
 }
 
-.logViewer .search-container {
+.tableWithCSV .search-container {
   float: right;
   margin-bottom: 5px;
 }
 
 
-.logViewer .search-container button {
+.tableWithCSV .search-container button {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
@@ -234,7 +233,7 @@
   cursor: pointer;
 }
 
-.logViewer .search-container button:hover {
+.tableWithCSV .search-container button:hover {
   background: #ccc;
 }
 
@@ -255,7 +254,7 @@
   }
 }
 
-.logViewer .search-container {
+.tableWithCSV .search-container {
   float: right;
   padding-right: 0px;
   margin-right: -7px;

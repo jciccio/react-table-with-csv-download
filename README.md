@@ -137,29 +137,39 @@ Changes the background to white and the text to blue
 | Name        | Type            | Mandatory | Description  
 | ------------- |:-------------:| -----:|:-----|
 | content      | object | Y |Contents to display on tables |
-| headers      | array (String)   | Y   | Array of strings, these will be used to choose what to show in the table |
-| encoding | String |N| Data encoding for table and file, UTF-8 by default | 
+| headers      | array (String)   | Y   | Array of strings, these will be used to choose what to show in the table | 
 | minHeight | integer     | Y| Min table desired height |
 | maxHeight | integer   |Y  | Max table desired height |
 | activateDownloadButton | boolean   |Y | Activates download button |
-| headerCss | object   |N | Headers customization |
-| bodyCss | object   |N | Body customizations |
+| caseInsensitive | boolean |N| do searches without casing| 
+| encoding | String |N| Data encoding for table and file, UTF-8 by default |
 | filename | String   |N | Name of the downloaded filename (default is logResults.csv) |
+| maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
+| pagination| int | N | integer that will indicate the max page size for the table |
+| placeholderSearchText| string |N| Placeholder text to appear in Searchbox |
 | renderLineNumber| present | N | render row number at the left of the table |
 | reverseLineNumber| present | N | reverse line number to start from last (depends on reverseLineNumber) |
-| pagination| int | N | integer that will indicate the max page size for the table |
-| topPagination | boolean |N| show pagination at top of the table| 
-| pageBoxStyle| object | N | customize style of pagination box objects |
-| activePageBoxStyle| object | N | customize style of active box |
-| maxPagesToDisplay| int | N | how many elements will the paginator have. Default 6 |
-| downloadButtonStyle| object | N | download button customizations |
-|sortColumn| string |N| Column that you want to sort Asc. (must be in headers prop)|
-|placeholderSearchText| string |N| Placeholder text to appear in Searchbox |
 |searchEnabled| presence (boolean) |N| Activate search feature|
-| caseInsensitive | boolean |N| do searches without casing| 
+|sortColumn| string |N| Column that you want to sort Asc. (must be in headers prop)|
+| topPagination | boolean |N| show pagination at top of the table| 
+
+# Styling Props
+
+| Name        | Type            | Mandatory | Description  
+| ------------- |:-------------:| -----:|:-----|
+| activePageBoxStyle| object | N | customize style of active box |
+| headerCss | object   |N | Headers customization |
+| pageBoxStyle| object | N | customize style of pagination box objects |
+| bodyCss | object   |N | Body customizations |
+| downloadButtonStyle| object | N | download button customizations |
 
 # What's new
-v0.6.01
+v0.6.2
+  * Several CSS changes made to table viewer
+  * CSS refactored, base name changed
+  * 
+
+v0.6.1
  * Added feature to specify the data encoding. Via `encoding` prop.
  By Default, the encoding is UTF-8 if prop is not passed.
 

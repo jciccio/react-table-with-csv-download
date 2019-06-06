@@ -7,7 +7,7 @@ import SearchBar from 'react-js-search';
 import FileSaver from 'file-saver/FileSaver';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
-import "./logViewer.css";
+import "./style.css";
 
 /**
  * TableViewer component
@@ -140,7 +140,7 @@ class TableViewer extends Component {
   render() {
     var height = {maxHeight: this.props.maxHeight}
     return (
-      <div className="logViewer">
+      <div className="tableWithCSV">
         <h2 className="tableTitle">{this.props.title}</h2>
         {this.renderStats()}
 
@@ -277,7 +277,7 @@ class TableViewer extends Component {
     return(
       <div 
         key={`table_row_${i} `} 
-        className={`divTableRow logViewerSuccess_${row.success}`}
+        className={`divTableRow tableWithCSVSuccess_${row.success}`}
         style={this.props.bodyCss}
       >
         {this.renderRow(row,i)}
@@ -393,11 +393,11 @@ class TableViewer extends Component {
         <div>
         <label>{this.props.title}</label>
         <br />
-        <label className="logViewerSuccess_true">
+        <label className="tableWithCSVSuccess_true">
           Success: {this.props.successRows}
         </ label>
         <br />
-        <label className="logViewerSuccess_false">
+        <label className="tableWithCSVSuccess_false">
           Error: {this.props.errorsRows}
         </ label>
         <br />
