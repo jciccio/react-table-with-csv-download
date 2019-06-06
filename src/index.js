@@ -138,24 +138,25 @@ class TableViewer extends Component {
   }
 
   render() {
-    var height = {maxHeight: this.props.maxHeight}
+    let tableStyle = this.props.tableStyle ? this.props.tableStyle : {};
+    var height = {maxHeight: this.props.maxHeight, ...tableStyle};
     return (
-      <div className="tableWithCSV">
+      <div className="tableWithCSV" >
         <h2 className="tableTitle">{this.props.title}</h2>
         {this.renderStats()}
-
         <div className="titleContainer">
           {this.renderDownload()}
-
-
           {this.renderTopPagination()}
           <div className="search-container">
             {this.renderSearch()}
           </div>
         </div>
-        <div className="divTable" style={height}>
-          <div className="divTableHeading">{this.renderHeaders()}</div>
-          <div className="divTableBody">{this.renderBody()}</div>
+
+        <div className="divTableContainer" >
+          <div className="divTable" style={height}>
+            <div className="divTableHeading">{this.renderHeaders()}</div>
+            <div className="divTableBody">{this.renderBody()}</div>
+          </div>
         </div>
         {this.renderPagination()}
       </div>

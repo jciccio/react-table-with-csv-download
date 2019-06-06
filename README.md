@@ -135,12 +135,12 @@ Changes the background to white and the text to blue
 # Props
 
 | Name        | Type            | Mandatory | Description  
-| ------------- |:-------------:| -----:|:-----|
+| ------------- |:-------------:| :-----:|:-----|
+| activateDownloadButton | boolean   |Y | Activates download button |
 | content      | object | Y |Contents to display on tables |
 | headers      | array (String)   | Y   | Array of strings, these will be used to choose what to show in the table | 
-| minHeight | integer     | Y| Min table desired height |
 | maxHeight | integer   |Y  | Max table desired height |
-| activateDownloadButton | boolean   |Y | Activates download button |
+| minHeight | integer     | Y| Min table desired height |
 | caseInsensitive | boolean |N| do searches without casing| 
 | encoding | String |N| Data encoding for table and file, UTF-8 by default |
 | filename | String   |N | Name of the downloaded filename (default is logResults.csv) |
@@ -158,16 +158,20 @@ Changes the background to white and the text to blue
 | Name        | Type            | Mandatory | Description  
 | ------------- |:-------------:| -----:|:-----|
 | activePageBoxStyle| object | N | customize style of active box |
-| headerCss | object   |N | Headers customization |
-| pageBoxStyle| object | N | customize style of pagination box objects |
 | bodyCss | object   |N | Body customizations |
 | downloadButtonStyle| object | N | download button customizations |
+| headerCss | object   |N | Headers customization |
+| pageBoxStyle| object | N | customize style of pagination box objects |
+| tableStyle | object   |N | Overall table style/size |
+
+
 
 # What's new
-v0.6.2
+v0.7.0
   * Several CSS changes made to table viewer
   * CSS refactored, base name changed
-  * 
+  * New CSS prop: `tableStyle` for overall table styling
+  * Breaking changes: if you rely on the old css `tableViewer` prefix, please change it to: `tableWithCSV`
 
 v0.6.1
  * Added feature to specify the data encoding. Via `encoding` prop.

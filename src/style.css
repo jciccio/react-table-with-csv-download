@@ -101,8 +101,12 @@
   height: 300px;
 }
 
+.tableWithCSV .divTableContainer{
+  width:100%;
+  float: left;
+}
 
-.tableWithCSV .divTable{
+.tableWithCSV  .divTableContainer .divTable{
   display: table;
   overflow: auto;
   text-align: center;
@@ -257,7 +261,6 @@
 .tableWithCSV .search-container {
   float: right;
   padding-right: 0px;
-  margin-right: -7px;
 }
 
 .hljs-string { color: #0052cc; }
