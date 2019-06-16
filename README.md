@@ -163,15 +163,30 @@ Changes the background to white and the text to blue
 | headerCss | object   |N | Headers customization |
 | pageBoxStyle| object | N | customize style of pagination box objects |
 | tableStyle | object   |N | Overall table style/size |
-
-
+| titleStyle | object   |N | Overall tile style/size |
 
 # What's new
+
+v0.7.9
+  * Dependencies updated
+
+v0.7.8
+  * Bug fixing and check title style check improvements. Please update if using v >=0.7.0
+
+v0.7.5
+  * Small bug fixes, checks and improvements
+
+v0.7.3
+  * Title will only appear if table has any kind of contents
+
+v0.7.1
+  * New style prop for title called `titleStyle`
+
 v0.7.0
   * Several CSS changes made to table viewer
   * CSS refactored, base name changed
   * New CSS prop: `tableStyle` for overall table styling
-  * Breaking changes: if you rely on the old css `tableViewer` prefix, please change it to: `tableWithCSV`
+  * Possible breaking changes: if you rely on the old css `tableViewer` prefix, please change it to: `tableWithCSV`
 
 v0.6.1
  * Added feature to specify the data encoding. Via `encoding` prop.

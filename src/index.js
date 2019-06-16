@@ -137,12 +137,24 @@ class TableViewer extends Component {
     }
   }
 
+  renderTitle(){
+    let titleStyle = this.props.titleStyle ? this.props.titleStyle : {};
+    if(Array.isArray(this.props.content) &&  this.props.content.length > 0){
+      return(
+        <h2 className="tableTitle" style={titleStyle}>{this.props.title}</h2>
+      );
+    }
+    else{
+      return null;
+    }
+  }
+
   render() {
     let tableStyle = this.props.tableStyle ? this.props.tableStyle : {};
     var height = {maxHeight: this.props.maxHeight, ...tableStyle};
     return (
       <div className="tableWithCSV" >
-        <h2 className="tableTitle">{this.props.title}</h2>
+        {this.renderTitle()}
         {this.renderStats()}
         <div className="titleContainer">
           {this.renderDownload()}
@@ -423,6 +435,7 @@ TableViewer.propTypes = {
   activateDownloadButton: PropTypes.bool,
   topPaginator: PropTypes.bool,
   headerCss:PropTypes.object,
+  titleStyle:PropTypes.object,
   bodyCss: PropTypes.object,
   filename:PropTypes.string,
   renderLineNumber:PropTypes.bool,

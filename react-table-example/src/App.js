@@ -83,6 +83,7 @@ class App extends Component {
   }
 
   render() {
+    let overallStyle = {"width":'auto'};
     return (
       <div className="App">
         <header className="App-header">
@@ -97,12 +98,14 @@ class App extends Component {
             minHeight={0}
             maxHeight={400}
             activateDownloadButton={this.state.activateDownloadButton}
-            pagination={55}
+            pagination={5}
             renderLineNumber
             reverseLineNumber
             searchEnabled
             sortColumn={"name"}
             topPagination
+            tableStyle={overallStyle}
+            titleStyle={{'textAlign':'left'}}
           />
       </div>
     );
