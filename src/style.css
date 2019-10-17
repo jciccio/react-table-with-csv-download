@@ -58,17 +58,7 @@
   border: 1px solid #ddd;
 }
 
-.tableWithCSV .tableWithCSVSuccess_true{
-  color:#0b8e07;
-}
 
-.tableWithCSV .tableWithCSVSuccess_false{
-  color:#8e0707;
-}
-
-.tableWithCSV .tableWithCSVSuccess_undefined{
-  color:#000;
-}
 
 .tableWithCSV .divTableHeading .divTableRow .divTableCell:first-child{
   border-left: 0px;

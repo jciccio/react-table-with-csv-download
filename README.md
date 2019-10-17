@@ -164,8 +164,15 @@ Changes the background to white and the text to blue
 | pageBoxStyle| object | N | customize style of pagination box objects |
 | tableStyle | object   |N | Overall table style/size |
 | titleStyle | object   |N | Overall tile style/size |
+| errorColor | string   |N | Hex value for text (default: #b30009)|
+| successColor | string   |N | Hex value for text (default: #0b7012)|
+| warningColor | string   |N | Hex value for text (default: #ba8722)|
 
 # What's new
+
+v0.7.10 - Last update before v0.8
+  * Added warning feature. Will color text in yellow row in case the row has the key warning (boolean:true)
+  * Added props for errorColor, successColor, warningColor for further customization
 
 v0.7.9
   * Dependencies updated
@@ -187,22 +194,6 @@ v0.7.0
   * CSS refactored, base name changed
   * New CSS prop: `tableStyle` for overall table styling
   * Possible breaking changes: if you rely on the old css `tableViewer` prefix, please change it to: `tableWithCSV`
-
-v0.6.1
- * Added feature to specify the data encoding. Via `encoding` prop.
- By Default, the encoding is UTF-8 if prop is not passed.
-
-v0.5.8
- * UTF-8 CSV download support
- 
-v0.5.7
- * Fixed issue introduced in 5.6 (sorry about that)
-
-v0.5.5
-* Added prop feature (topPagination) to show pagination at top.
-
-v0.5.0
-* Table now speaks JSON, you can pass as param a JSON in string format and will be rendered.
 
 # License 
 Licensed under the MIT License © [jciccio](https://www.npmjs.com/~jciccio)

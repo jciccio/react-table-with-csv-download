@@ -287,11 +287,24 @@ class TableViewer extends Component {
   }
 
   getRow(row, i){
+    let isWarning = row.warning || false;
+    let isSucccess = row.success;
+    let fontColor = "#000000";
+    if(isWarning){
+      fontColor = (this.props.warningColor ) ? this.props.warningColor : '#ba8722';
+    }
+    else if (isSucccess === true){
+      fontColor = (this.props.successColor ) ? this.props.successColor : '#0b7012';
+    }
+    else if (isSucccess=== false){ // because can be undefined
+      fontColor = (this.props.errorColor ) ? this.props.errorColor : '#b30009';
+    }
+
     return(
       <div 
         key={`table_row_${i} `} 
-        className={`divTableRow tableWithCSVSuccess_${row.success}`}
-        style={this.props.bodyCss}
+        className={`divTableRow`}
+        style={{...this.props.bodyCss, ...{"color":fontColor}} }
       >
         {this.renderRow(row,i)}
       </div>
@@ -325,6 +338,7 @@ class TableViewer extends Component {
     var headers = this.props.headers;
     if (row){
       let rowData = [];
+      // Render line number
       if(this.props.renderLineNumber){
         let number = i+1;
         if (this.props.reverseLineNumber){
@@ -332,8 +346,9 @@ class TableViewer extends Component {
         }
         rowData.push(this.renderLineNumber(number));
       }
-      let rowContent = headers.map((header, element) => {
 
+      // Create content
+      let rowContent = headers.map((header, element) => {
         let content = row[header];
         let isJson = false;
         try {
@@ -345,9 +360,8 @@ class TableViewer extends Component {
           content = row[header];
           isJson = false;
         }
-
         if (isJson){
-          let jsonText =JSON.stringify(content,undefined,2);
+          let jsonText = JSON.stringify(content,undefined,2);
           let highlight = this.highlightSyntax(jsonText);
           let parsedHtml = ReactHtmlParser(highlight, true);
           return (
@@ -408,11 +422,11 @@ class TableViewer extends Component {
         <br />
         <label className="tableWithCSVSuccess_true">
           Success: {this.props.successRows}
-        </ label>
+        </label>
         <br />
         <label className="tableWithCSVSuccess_false">
           Error: {this.props.errorsRows}
-        </ label>
+        </label>
         <br />
         <label>-----------------------------</label>
         <br />
@@ -446,7 +460,10 @@ TableViewer.propTypes = {
   maxPagesToDisplay: PropTypes.number,
   downloadButtonStyle:PropTypes.object,
   sortColumn:PropTypes.string,
-  encoding:PropTypes.string
+  encoding:PropTypes.string,
+  successColor: PropTypes.string,
+  warningColor: PropTypes.string,
+  errorColor: PropTypes.string
 };
 
 export default TableViewer;
