@@ -23,8 +23,8 @@ class App extends Component {
       {number: 21, name: "Pirlo", position: JSON.stringify(json), success: false},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB", success: true},
-      {number: 4, name: "Cannavaro", position: JSON.stringify(json)},
-      {number: 2, name: "Puyol", position: "CB", success: false},
+      {number: 4, name: "Cannavaro", position: JSON.stringify(json), age: 38},
+      {number: 2, name: "Puyol", position: "CB", success: false, foot: "lefty"},
       {number: 15, name: "Bonaventura", position: "MD", warning:true}
     ]
 

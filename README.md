@@ -170,7 +170,10 @@ Changes the background to white and the text to blue
 
 # What's new
 
-v0.7.10 - Last update before v0.8
+v0.8.0
+  * Added feature to generate CSV file with all different columns, even if some rows don't have data for that column. This means that everything will be visible.
+
+v0.7.10 
   * Added warning feature. Will color text in yellow row in case the row has the key warning (boolean:true)
   * Added props for errorColor, successColor, warningColor for further customization
 

@@ -82,7 +82,6 @@ class TableViewer extends Component {
   }
 
   generateAndDownloadCSV() {
-
     let encoding = this.props.encoding ? this.props.encoding : "UTF-8";
     let csvType = {encoding:encoding,type:"text/plain;charset="+encoding};
     let filename = this.props.filename? this.props.filename : "logResults.csv";
@@ -96,20 +95,30 @@ class TableViewer extends Component {
             headers.push(property);
           }
         }
-        let row = headers.join(",");
+      }
+      else{
+        for (let property in rowObj) {
+          if (rowObj.hasOwnProperty(property)) {
+            if (headers.indexOf(property) == -1){
+              headers.push(property);
+            }
+          }
+        }
+        var rowData = [];
+        for (var i in headers) {
+          let data = rowObj[headers[i]];
+          if (data && typeof data == "string" && data.indexOf(",") >= 0 ){
+            data = `"${data.replace(/"/g, '""')}"`;
+          }
+          rowData.push(data);
+        }
+        let row = rowData.join(",");
         csvContent += row + "\r\n";
       }
-      var rowData = [];
-      for (var i in headers) {
-        let data = rowObj[headers[i]];
-        if (data && typeof data == "string" && data.indexOf(",") >= 0 ){
-          data = `"${data.replace(/"/g, '""')}"`;
-        }
-        rowData.push(data);
-      }
-      let row = rowData.join(",");
-      csvContent += row + "\r\n";
+      
     });
+    let row = headers.join(",");
+    csvContent = row +"\r\n"+ csvContent ;
     var blob = new Blob([csvContent], csvType);
     FileSaver.saveAs(blob, filename);
   }

@@ -1,6 +1,6 @@
 {
   "name": "react-js-table-with-csv-dl",
-  "version": "0.7.10",
+  "version": "0.8.0",
   "description": "React JS tables and log viewer with stats if needed. Has the functionality to dowload table contents in CSV file with data stored in class prop.",
   "main": "build/index.js",
   "peerDependencies": {
