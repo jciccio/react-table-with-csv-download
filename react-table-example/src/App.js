@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    let headers = ["number", "position", "name"];
+    let headers = ["number", "position", "name", "metadata"];
 
 
     let json = {
@@ -19,11 +19,11 @@ class App extends Component {
       "Object":[{"id":1000,"values":"K-1"}]};
 
     let table = [ 
-      {number: 12, name:"Buffon", position: JSON.stringify(json), success: true},
-      {number: 21, name: "Pirlo", position: JSON.stringify(json), success: false},
+      {number: 12, name:"Buffon",  success: true},
+      {number: 21, name: "Pirlo", metadata: JSON.stringify(json), success: false},
       {number: 10, name: "Ruiz", position: "MDI"},
-      {number: 7, name: "Nesta", position: "RB", success: true},
-      {number: 4, name: "Cannavaro", position: JSON.stringify(json), age: 38},
+      {number: 7, name: "Nesta", position: "RB"},
+      {number: 4, name: "Cannavaro", metadata: JSON.stringify(json), age: 38},
       {number: 2, name: "Puyol", position: "CB", success: false, foot: "lefty"},
       {number: 15, name: "Bonaventura", position: "MD", warning:true}
     ]
