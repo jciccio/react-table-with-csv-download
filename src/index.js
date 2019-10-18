@@ -104,17 +104,17 @@ class TableViewer extends Component {
             }
           }
         }
-        var rowData = [];
-        for (var i in headers) {
-          let data = rowObj[headers[i]];
-          if (data && typeof data == "string" && data.indexOf(",") >= 0 ){
-            data = `"${data.replace(/"/g, '""')}"`;
-          }
-          rowData.push(data);
-        }
-        let row = rowData.join(",");
-        csvContent += row + "\r\n";
       }
+      var rowData = [];
+      for (var i in headers) {
+        let data = rowObj[headers[i]];
+        if (data && typeof data == "string" && data.indexOf(",") >= 0 ){
+          data = `"${data.replace(/"/g, '""')}"`;
+        }
+        rowData.push(data);
+      }
+      let row = rowData.join(",");
+      csvContent += row + "\r\n";
       
     });
     let row = headers.join(",");
