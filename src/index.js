@@ -299,11 +299,11 @@ class TableViewer extends Component {
     let isWarning = row.warning || false;
     let isSucccess = row.success;
     let fontColor = "#000000";
-    if(isWarning){
-      fontColor = (this.props.warningColor ) ? this.props.warningColor : '#ba8722';
-    }
-    else if (isSucccess === true){
+    if (isSucccess === true){
       fontColor = (this.props.successColor ) ? this.props.successColor : '#0b7012';
+    }
+    else if(isWarning){
+      fontColor = (this.props.warningColor ) ? this.props.warningColor : '#ba8722';
     }
     else if (isSucccess=== false){ // because can be undefined
       fontColor = (this.props.errorColor ) ? this.props.errorColor : '#b30009';

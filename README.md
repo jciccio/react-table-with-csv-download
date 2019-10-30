@@ -171,6 +171,9 @@ Changes the background to white and the text to blue
 # What's new
 
 v0.8.3
+  * If there is a tie between an error and a warning, the error will have priority and show the error color
+
+v0.8.3
   * Added feature to generate CSV file with all different columns, even if some rows don't have data for that column. This means that everything will be visible.
 
 v0.7.10 
