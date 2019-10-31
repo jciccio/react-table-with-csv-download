@@ -299,14 +299,15 @@ class TableViewer extends Component {
     let isWarning = row.warning || false;
     let isSucccess = row.success;
     let fontColor = "#000000";
-    if (isSucccess === true){
-      fontColor = (this.props.successColor ) ? this.props.successColor : '#0b7012';
+    
+    if (isSucccess=== false){ // because can be undefined
+      fontColor = (this.props.errorColor ) ? this.props.errorColor : '#b30009';
     }
     else if(isWarning){
       fontColor = (this.props.warningColor ) ? this.props.warningColor : '#ba8722';
     }
-    else if (isSucccess=== false){ // because can be undefined
-      fontColor = (this.props.errorColor ) ? this.props.errorColor : '#b30009';
+    else if (isSucccess === true){
+      fontColor = (this.props.successColor ) ? this.props.successColor : '#0b7012';
     }
 
     return(
@@ -360,13 +361,21 @@ class TableViewer extends Component {
       let rowContent = headers.map((header, element) => {
         let content = row[header];
         let isJson = false;
+        console.log("Cont: "+ content);
         try {
           if (isNaN(content)){
             content = JSON.parse(content);
             isJson = true;
-          }
+          }         
         } catch (e) {
           content = row[header];
+          if(content){
+            content = content.split("\n").map((item, i) => {
+              return (<p key={`part-${i}`}>{item}</p>)
+            });  
+          }
+          
+          console.log("catch: "+ content);
           isJson = false;
         }
         if (isJson){

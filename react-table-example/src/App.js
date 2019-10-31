@@ -18,8 +18,10 @@ class App extends Component {
       "array2":[],
       "Object":[{"id":1000,"values":"K-1"}]};
 
+    let text = '"Gianluigi\nBuffon"';
+
     let table = [ 
-      {number: 12, name:"Buffon",  success: true},
+      {number: 12, name:text,  success: true},
       {number: 21, name: "Pirlo", metadata: JSON.stringify(json), success: false},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB"},

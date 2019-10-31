@@ -169,8 +169,12 @@ Changes the background to white and the text to blue
 | warningColor | string   |N | Hex value for text (default: #ba8722)|
 
 # What's new
+v0.8.7
 
-v0.8.3
+  * Added feature for line change, if you send text with the escape char \n, it will be rendered in different lines in the UI, and also escaped in the CSV download. 
+  E.g: let text = '"Gianluigi\nBuffon"'; Check the Example in GitHub.
+
+v0.8.6
   * If there is a tie between an error and a warning, the error will have priority and show the error color
 
 v0.8.3
