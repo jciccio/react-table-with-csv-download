@@ -1,6 +1,6 @@
 {
   "name": "react-js-table-with-csv-dl",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "React JS tables and log viewer with stats if needed. Has the functionality to dowload table contents in CSV file with data stored in class prop.",
   "main": "build/index.js",
   "peerDependencies": {
@@ -12,34 +12,36 @@
     "react-html-parser": "^2.0.2",
     "react-js-paginator": "^0.1.10",
     "react-js-search": "^0.2.4",
-    "webpack": "^4.0.0"
+    "webpack": "^4.42.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint --report-unused-disable-directives src",
+    "fix": "eslint --fix --report-unused-disable-directives src"
   },
   "author": {
     "name": "Jose Antonio Ciccio",
     "email": "jciccio@gmail.com"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^6.1.2",
-    "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.5.1",
-    "babel-preset-react": "^6.3.13",
-    "babel-preset-stage-1": "^6.24.1",
-    "babel-register": "^6.3.13",
-    "babel-runtime": "^6.3.19",
-    "css-loader": "^1.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-react": "^7.19.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.6.3",
     "react-icons": "^2.2.7",
     "style-loader": "^0.22.1",
-    "webpack-cli": "^3.3.4"
+    "webpack-cli": "^3.3.11"
   },
   "repository": {
     "type": "git",
