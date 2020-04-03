@@ -192,9 +192,7 @@ class TableViewer extends Component {
       if (this.props.placeholderSearchText) {
         search = this.props.placeholderSearchText;
       }
-
       const caseInsensitive = !!this.props.caseInsensitive;
-
       return (
         <SearchBar
           onSearchTextChange={(b, e) => { this.onSearch(b, e); }}
@@ -205,7 +203,6 @@ class TableViewer extends Component {
         />
       );
     }
-
     return null;
   }
 
@@ -240,7 +237,6 @@ class TableViewer extends Component {
           />
       );
     }
-
     return null;
   }
 
@@ -259,11 +255,9 @@ class TableViewer extends Component {
     const pageStart = (this.state.currentPage - 1) * this.props.pagination;
     const rowQty = rows.length;
     const { headers } = this.props;
-
     for (let i = pageStart; i < pageStart + this.props.pagination && rows[i]; i++) {
       rowsContent.push(this.getRow(rows[i], i));
     }
-
     return rowsContent;
   }
 
@@ -337,12 +331,10 @@ class TableViewer extends Component {
         }
         rowData.push(this.renderLineNumber(number));
       }
-
       // Create content
       const rowContent = headers.map((header, element) => {
         let content = row[header];
         let isJson = false;
-
         try {
           if (isNaN(content)) {
             content = JSON.parse(content);
@@ -351,24 +343,12 @@ class TableViewer extends Component {
         } catch (e) {
           content = row[header];
           if (content) {
-            content = content.split('\n').map((item, i) => (<p key={`part-${i}`}>{item}</p>));
+            content = content.split('\n').map((item, i) => (<div  key={`part-${i}`}>{item}</div>));
           }
-
           isJson = false;
         }
         if (isJson) {
-          const jsonText = JSON.stringify(content, undefined, 2);
-          const highlight = this.highlightSyntax(jsonText);
-          const parsedHtml = ReactHtmlParser(highlight, true);
-          return (
-            <div
-              key={`table_row_${i}_cell_${element}`}
-              className="divTableCell">
-              <pre>
-                {parsedHtml}
-              </pre>
-            </div>
-          );
+          return this.renderJsonContent(content,i, element);
         }
 
         return (
@@ -383,6 +363,21 @@ class TableViewer extends Component {
     }
 
     return null;
+  }
+
+  renderJsonContent(content,i,element){
+    const jsonText = JSON.stringify(content, undefined, 2);
+    const highlight = this.highlightSyntax(jsonText);
+    const parsedHtml = ReactHtmlParser(highlight, true);
+    return (
+      <div
+        key={`table_row_${i}_cell_${element}`}
+        className="divTableCell">
+        <pre>
+          {parsedHtml}
+        </pre>
+      </div>
+    );
   }
 
   renderHeaders() {

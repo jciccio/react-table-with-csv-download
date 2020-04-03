@@ -20,9 +20,11 @@ class App extends Component {
 
     let text = '"Gianluigi\nBuffon"';
 
+    let htmlTest = "<div>Here<b> goes</b> html</div>"
+
     let table = [ 
       {number: 12, name:text,  success: true},
-      {number: 21, name: "Pirlo", metadata: JSON.stringify(json), success: false},
+      {number: 21, name: htmlTest, metadata: JSON.stringify(json), success: false},
       {number: 10, name: "Ruiz", position: "MDI"},
       {number: 7, name: "Nesta", position: "RB"},
       {number: 4, name: "Cannavaro", metadata: JSON.stringify(json), age: 38},
