@@ -7,10 +7,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    let headers = ["number", "position", "name", "metadata"];
+    const headers = ["number", "position", "name", "metadata"];
 
 
-    let json = {
+    const json = {
       "Key1": {"id":10,"values":"1-2"},
       "Key2":{},
       "Key3":"(Zone 1)",
@@ -18,17 +18,17 @@ class App extends Component {
       "array2":[],
       "Object":[{"id":1000,"values":"K-1"}]};
 
-    let text = '"Gianluigi\nBuffon"';
+    const text = '"Gianluigi\nBuffon"';
 
-    let htmlTest = "<div>Here<b> goes</b> html</div>"
+    const htmlTest = () => <div><a href="#">Yep</a></div>
 
-    let table = [ 
+    const table = [ 
       {number: 12, name:text,  success: true},
       {number: 21, name: htmlTest, metadata: JSON.stringify(json), success: false},
-      {number: 10, name: "Ruiz", position: "MDI"},
+      {number: 10, name: htmlTest, position: "MDI"},
       {number: 7, name: "Nesta", position: "RB"},
       {number: 4, name: "Cannavaro", metadata: JSON.stringify(json), age: 38},
-      {number: 2, name: "Puyol", position: "CB", success: false, foot: "lefty"},
+      {number: 2, name: htmlTest, position: "CB", success: false, foot: "lefty"},
       {number: 15, name: "Bonaventura", position: "MD", warning:true}
     ]
 

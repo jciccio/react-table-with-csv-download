@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser';
 import './style.css';
 
+
 /**
  * TableViewer component
  * @author [Jose Antonio Ciccio](https://github.com/jciccio)
@@ -319,6 +320,10 @@ class TableViewer extends Component {
     return null;
   }
 
+  isFunction(functionToCheck) {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+  }
+
   renderRow(row, i) {
     const { headers } = this.props;
     if (row) {
@@ -342,21 +347,29 @@ class TableViewer extends Component {
           }
         } catch (e) {
           content = row[header];
-          if (content) {
-            content = content.split('\n').map((item, i) => (<div  key={`part-${i}`}>{item}</div>));
-          }
           isJson = false;
+          try{
+            if (this.isFunction(content)){
+              content = content();
+            }
+          }
+          catch (e){
+            if (content) {
+              content = content.split('\n').map((item, i) => (<div  key={`part-${i}`}>{item}</div>));
+            }
+          }
         }
         if (isJson) {
           return this.renderJsonContent(content,i, element);
         }
 
+
         return (
-            <div
-              key={`table_row_${i}_cell_${element}`}
-              className="divTableCell">
-              {content}
-            </div>
+          <div
+            key={`table_row_${i}_cell_${element}`}
+            className="divTableCell">
+            { content }
+          </div>
         );
       });
       return [...rowData, ...rowContent];

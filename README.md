@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/dm/react-js-table-with-csv-dl.svg)
 
 # React-table-with-csv-download
-React JS Table and log viewer with CSV download functionality
+React JS Table and log viewer with CSV download functionality accepts text, json and JSX for rendering.
 
 # Description
 
@@ -17,9 +17,6 @@ Just click on ⭐️ button :)
 # How it looks
 
 ![alt text](screenshots/table.png "React JS Table with download button example")
-
-
-
 
 # Installation
 
@@ -169,8 +166,13 @@ Changes the background to white and the text to blue
 | warningColor | string   |N | Hex value for text (default: #ba8722)|
 
 # What's new
-v0.8.7
 
+v0.9.0
+  * Html render -> send html from a func: htmlTest = () => <div><a href="#">Yep</a></div>
+  * Dependencies updated
+  * Overall package size optimized
+
+v0.8.7
   * Added feature for line change, if you send text with the escape char \n, it will be rendered in different lines in the UI, and also escaped in the CSV download. 
   E.g: let text = '"Gianluigi\nBuffon"'; Check the Example in GitHub.
 
