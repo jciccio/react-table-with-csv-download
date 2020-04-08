@@ -89,12 +89,13 @@ You can send a JSON String to a specific cell and will be rendered correctly wit
 
 ```javascript
 let json = {
-      "Key1": {"id":10,"values":"1-2"},
-      "Key2":{},
-      "Key3":"(Zone 1)",
-      "description":"","array":[100],
-      "array2":[],
-      "Object":[{"id":1000,"values":"K-1"}]};
+  "Key1": {"id":10,"values":"1-2"},
+  "Key2":{},
+  "Key3":"(Zone 1)",
+  "description":"","array":[100],
+  "array2":[],
+  "Object":[{"id":1000,"values":"K-1"}]
+};
 ```
   
 Note that you should convert JSON to a String using the function stringify(). Then, you'll have the result:
@@ -108,8 +109,9 @@ false -> red
 omit the key and the text will be black by default
 
 ```javascript
-{ number: 12, 
-  name:"Buffon", 
+{ 
+  number: 1, 
+  name:() => <div><a href="#">Buffon</a></div>, 
   position: JSON.stringify(json), 
   success: true
 }
@@ -167,8 +169,8 @@ Changes the background to white and the text to blue
 
 # What's new
 
-v0.9.0
-  * Html render -> send html from a func: htmlTest = () => <div><a href="#">Yep</a></div>
+v0.9.1
+  * Html render -> send html from a func: `htmlTest = () => <div><a href="#">Yep</a></div>`
   * Dependencies updated
   * Overall package size optimized
 
