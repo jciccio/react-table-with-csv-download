@@ -169,6 +169,9 @@ Changes the background to white and the text to blue
 
 # What's new
 
+v0.9.4
+  * Dependencies updated
+
 v0.9.1
   * Html render -> send html from a func: `htmlTest = () => <div><a href="#">Yep</a></div>`
   * Dependencies updated
