@@ -169,6 +169,13 @@ Changes the background to white and the text to blue
 
 # What's new
 
+v0.9.6
+  * More size optimizations and paginator dependency updated to 0.2.1
+
+v0.9.5
+  * Dependencies updated
+  * Overall package size optimized
+
 v0.9.4
   * Dependencies updated
 
