@@ -1,6 +1,6 @@
 {
   "name": "react-js-table-with-csv-dl",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "React JS tables and log viewer with stats if needed. Has the functionality to dowload table contents in CSV file with data stored in class prop.",
   "main": "build/index.js",
   "peerDependencies": {
@@ -11,7 +11,7 @@
     "react": "^16.0.0",
     "react-html-parser": "^2.0.2",
     "react-js-paginator": "^0.2.1",
-    "react-js-search": "^0.2.4"
+    "react-js-search": "^0.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -37,7 +37,6 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
-    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.6.3",
     "react-icons": "^2.2.7",
     "webpack-cli": "^3.3.11"

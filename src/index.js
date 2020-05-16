@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
 import MdFileDownload from 'react-icons/lib/md/file-download';
 import Search from 'react-icons/lib/md/search';
 import Paginator from 'react-js-paginator';
